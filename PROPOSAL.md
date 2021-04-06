@@ -1,33 +1,11 @@
-For my final project, I hope to work on a maze game, but mostly focuses on the visualization aspect. The
-screen will be filled with small grids, similar to a graph paper. When the user starts the application, 
-a grid will be given as the starting point and another will be given as the endpoint. As the user moves around
-the map with arrow keys, each move will cause an animation in which the grids next to the user grid will change
-in color and effects. Although the goal of the game will be to get to the endpoint, the user can also enjoy the visual 
-aspect while going through different maps.
+For my final project, I hope to work on a maze game, but mostly focuses on the visualization aspect. The screen will be filled with small grids, similar to a graph paper. When the user starts the application, a grid will be given as the starting point and another will be given as the endpoint. As the user moves around the map with arrow keys, each move will cause an animation in which the grids next to the user grid will change
+in color and effects. Although the goal of the game will be to get to the endpoint, the user can also enjoy the visual aspect while going through different maps.
 
-I've already had background knowledge on making different grids and colors in Cinder from the Ideal Gas 
-assignment. The Mino-poly assignment, although completely different, also provided me some insights into how
-objects move around in an application. My initial thought of making a visualization game came from a
-[Youtube Video](https://www.youtube.com/watch?v=msttfIHHkak&ab_channel=Cl%C3%A9mentMihailescu). From that
-video and from what the Youtuber managed to accomplish after, it inspired me to do something like that myself. 
-My project will be completely different, of course. As someone who hopes to get an internship at a tech company
-in the future, I also think employers enjoy the visualization aspect when it comes to personal projects. This
-will motivate me even more when working on this project.
+I've already had background knowledge on making different grids and colors in Cinder from the Ideal Gas assignment. The Mino-poly assignment, although completely different, also provided me some insights into how objects move around in an application. My initial thought of making a visualization game came from a [Youtube Video](https://www.youtube.com/watch?v=msttfIHHkak&ab_channel=Cl%C3%A9mentMihailescu). From that video and from what the Youtuber managed to accomplish after, it inspired me to do something like that myself. My project will be completely different, of course. As someone who hopes to get an internship at a tech company in the future, I also think employers enjoy the visualization aspect when it comes to personal projects. This will motivate me even more when working on this project.
   
-For the first week, I hope to have the application to the point where it can randomly generate a new map
-that works each time the application is run. That means each game should have a different starting point, ending
-point, and boundaries. By the end of the second week, the user should be able to move across from the starting
-point to the ending point with the arrow keys. Boundaries should also prevent the user from moving to that
-direction. By the end of the third week, the visualization aspect should be done. As the user moves across the
-map, its surrounding grids should turn to different colors, eventually covering the entire map.
+For the first week, I hope to have the application to the point where it can randomly generate a new map that works each time the application is run. That means each game should have a different starting point, ending point, and boundaries. By the end of the second week, the user should be able to move across from the starting point to the ending point with the arrow keys. Boundaries should also prevent the user from moving to that direction. By the end of the third week, the visualization aspect should be done. As the user moves across the map, its surrounding grids should turn to different colors, eventually covering the entire map.
   
-A likely criticism of this project proposal is that its complexity isn't high. Personally, I don't think that's true
-because for a visualizer, there are always things that can be done to improve and make it more attractive
-to users. Due to its simple concept, the project sounds a lot easier that it actually is. If I finish the project 
-early, I'll hope to add a feature where the user can use their mouse as well as the arrows on the keyboard. Although 
-I probably won't make it past this point, I can maybe add more features to the game with grids that have different 
-functions, such as mine grids or grids that do different animations. Implementing music and sound effects will also
-make the application more interesting.
+A likely criticism of this project proposal is that its complexity isn't high. Personally, I don't think that's true because for a visualizer, there are always things that can be done to improve and make it more attractive to users. Due to its simple concept, the project sounds a lot easier that it actually is. If I finish the project early, I'll hope to add a feature where the user can use their mouse as well as the arrows on the keyboard. Although I probably won't make it past this point, I can maybe add more features to the game with grids that have different functions, such as mine grids or grids that do different animations. Implementing music and sound effects will also make the application more interesting.
   
 Although I'm still early into my research, an external library that I'll probably be using is 
 [matplot](https://github.com/lava/matplotlib-cpp). 
