@@ -49,12 +49,20 @@ get_filename_component(APP_PATH "${CMAKE_CURRENT_SOURCE_DIR}/" ABSOLUTE)
 
 include("${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake")
 
+list(APPEND CORE_SOURCE_FILES)
+
 list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
         src/visualizer/game_map.cc
         src/visualizer/visualizer_app.cc)
 
 list(APPEND TEST_FILES tests/map_test.cc)
 
+ci_make_app( 
+        APP_NAME        visualizer-app
+        CINDER_PATH     ${CINDER_PATH}
+        SOURCES         apps/cinder_app_main.cc ${SOURCE_FILES}
+        INCLUDES        include
+)
 
 ci_make_app(
         APP_NAME        visualizer-test

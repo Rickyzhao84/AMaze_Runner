@@ -1,8 +1,25 @@
-//
-// Created by ricky on 4/15/2021.
-//
+#pragma once
 
-#ifndef FINAL_PROJECT_RICKYZHAO84_GAME_MAP_H
-#define FINAL_PROJECT_RICKYZHAO84_GAME_MAP_H
+#include "cinder/gl/gl.h"
 
-#endif //FINAL_PROJECT_RICKYZHAO84_GAME_MAP_H
+namespace visualizer_app {
+    
+    
+    class GameMap {
+        
+    public:
+        
+        GameMap(const glm::vec2& top_left_corner, size_t dimension,
+                double map_size);
+        
+        void Draw() const;
+        
+    private:
+        
+        glm::vec2 top_left_corner_;
+        size_t dimension_;
+        double map_size_;
+    };
+    
+    
+}
