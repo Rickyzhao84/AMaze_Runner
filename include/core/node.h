@@ -22,15 +22,18 @@ namespace visualizer_app {
     };
 
     class StartingNode : public Node {
-
+    public:
+        StartingNode(ci::Color nodeColor);
     };
 
     class EndingNode : public Node {
-
+    public:
+        EndingNode(ci::Color nodeColor);
     };
 
     class ObstacleNode : public Node {
-        
+    public:
+        ObstacleNode(ci::Color nodeColor);
     };
 
 }
