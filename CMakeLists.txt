@@ -49,7 +49,8 @@ get_filename_component(APP_PATH "${CMAKE_CURRENT_SOURCE_DIR}/" ABSOLUTE)
 
 include("${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake")
 
-list(APPEND CORE_SOURCE_FILES)
+list(APPEND CORE_SOURCE_FILES src/core/player.cc
+        src/core/node.cc)
 
 list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
         src/visualizer/game_map.cc

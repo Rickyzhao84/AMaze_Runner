@@ -13,7 +13,7 @@ VisualizerApp::VisualizerApp(): game_map_(glm::vec2(kTopLeftCornerCoordinate, kT
 }
 
 void VisualizerApp::draw() {
-    ci::Color8u color("white");
+    ci::Color8u color("turquoise");
     ci::gl::clear(color);
     game_map_.Draw();
 }

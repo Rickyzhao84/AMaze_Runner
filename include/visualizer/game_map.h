@@ -14,6 +14,10 @@ namespace visualizer_app {
         
         void Draw() const;
         
+        size_t GenerateColorNumber();
+        
+        const static size_t kTotalColorNumbers = 256;
+        
     private:
         
         glm::vec2 top_left_corner_;
