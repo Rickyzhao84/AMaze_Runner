@@ -5,13 +5,12 @@
 #include "cinder/gl/gl.h"
 #include "game_map.h"
 #include <core/Location.h>
+#include <core/player.h>
 
 
 namespace visualizer_app {
 
     namespace visualizer {
-
-        const size_t kDimension = 25;
 
         class VisualizerApp : public ci::app::App {
         public:
@@ -21,11 +20,13 @@ namespace visualizer_app {
 
             void keyDown(ci::app::KeyEvent event) override;
 
+            const size_t kDimension = 25;
             const double kTopLeftCornerCoordinate = 50;
             const double kWindowSize = 1000;
 
         private:
             GameMap game_map_;
+            Player player_;
         };
 
 

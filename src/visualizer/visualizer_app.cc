@@ -36,15 +36,16 @@ namespace visualizer_app {
         void VisualizerApp::keyDown(ci::app::KeyEvent event) {
             switch (event.getCode()) {
                 case ci::app::KeyEvent::KEY_LEFT: {
+                    player_.MoveLeft();
                 }
                 case ci::app::KeyEvent::KEY_RIGHT: {
-                    
+                    player_.MoveRight(kDimension);
                 }
                 case ci::app::KeyEvent::KEY_DOWN: {
-                    
+                    player_.MoveDown(kDimension);
                 }
                 case ci::app::KeyEvent::KEY_UP: {
-
+                    player_.MoveUp();
                 }
             }
         }

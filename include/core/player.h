@@ -6,19 +6,19 @@ namespace visualizer_app {
     class Player {
     public:
         
-        Player(size_t dimension);
+        Player();
         
         void MoveLeft();
         
-        void MoveRight();
+        void MoveRight(size_t dimension);
         
         void MoveUp();
         
-        void MoveDown();
+        void MoveDown(size_t dimension);
         
     private:
 
-        Location location_();
+        Location location_;
         size_t dimension_;
         
     };

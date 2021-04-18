@@ -3,35 +3,34 @@
 
 namespace visualizer_app {
     
-    Player::Player(size_t dimension) {
-        dimension_ = dimension;
+    Player::Player() {
     }
     
     void Player::MoveLeft() {
-        size_t original_x_coord = location_().GetXCoord();
+        size_t original_x_coord = location_.GetXCoord();
         if (original_x_coord != 0) {
-            location_().SetXCoord(original_x_coord - 1);
+            location_.SetXCoord(original_x_coord - 1);
         }
     }
     
-    void Player::MoveRight() {
-        size_t original_x_coord = location_().GetXCoord();
-        if (original_x_coord != dimension_ - 1) {
-            location_().SetXCoord(original_x_coord + 1);
+    void Player::MoveRight(size_t dimension) {
+        size_t original_x_coord = location_.GetXCoord();
+        if (original_x_coord != dimension - 1) {
+            location_.SetXCoord(original_x_coord + 1);
         }
     }
     
-    void Player::MoveDown() {
-        size_t original_y_coord = location_().GetYCoord();
-        if (original_y_coord != dimension_ - 1) {
-            location_().SetYCoord(original_y_coord + 1);
+    void Player::MoveDown(size_t dimension) {
+        size_t original_y_coord = location_.GetYCoord();
+        if (original_y_coord != dimension - 1) {
+            location_.SetYCoord(original_y_coord + 1);
         }
     }
     
     void Player::MoveUp() {
-        size_t original_y_coord = location_().GetYCoord();
+        size_t original_y_coord = location_.GetYCoord();
         if (original_y_coord != 0) {
-            location_().SetYCoord(original_y_coord - 1);
+            location_.SetYCoord(original_y_coord - 1);
         }
     }
     
