@@ -1,4 +1,4 @@
-#pragma onceonce
+#pragma once
 
 namespace visualizer_app {
     

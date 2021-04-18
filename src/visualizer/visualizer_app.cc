@@ -25,10 +25,12 @@ namespace visualizer_app {
         void VisualizerApp::draw() {
             ci::Color8u color("turquoise");
             ci::gl::clear(color);
+            game_map_.CreateNodes();
+            game_map_.CreateMapModel();
             game_map_.Draw();
-            ci::gl::TextureRef look_up = ci::gl::Texture::create(
-                    ci::loadImage("C:/Users/ricky/Cinder/testing/final-project-Rickyzhao84/looking_down.jpg"));
-            ci::gl::draw(look_up);
+//            ci::gl::TextureRef look_up = ci::gl::Texture::create(
+//                    ci::loadImage("C:/Users/ricky/Cinder/testing/final-project-Rickyzhao84/looking_down.jpg"));
+//            ci::gl::draw(look_up);
 
             
         }
