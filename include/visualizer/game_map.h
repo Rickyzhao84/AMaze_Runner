@@ -23,6 +23,8 @@ namespace visualizer_app {
             void CreateNodes();
             
             void CreateMapModel();
+            
+            void UpdateMapPixelColor(size_t row, size_t column);
 
             void CreateAnimation();
 
@@ -38,6 +40,8 @@ namespace visualizer_app {
             
             const ci::Color kStartingNodeColor = "yellow";
 
+            std::vector<std::vector<size_t>> map_model_;
+
         private:
 
             glm::vec2 top_left_corner_;
@@ -46,7 +50,6 @@ namespace visualizer_app {
             std::vector<ObstacleNode> obstacle_nodes_;
             StartingNode starting_node_;
             EndingNode ending_node_;
-            std::vector<std::vector<size_t>> map_model_;
             size_t current_location_x_;
             size_t current_location_y_;
         };

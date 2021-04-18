@@ -27,6 +27,7 @@ namespace visualizer_app {
         private:
             GameMap game_map_;
             Player player_;
+            Location location_;
         };
 
 

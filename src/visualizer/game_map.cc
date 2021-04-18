@@ -86,6 +86,10 @@ namespace visualizer_app {
 
         }
 
+        void GameMap::UpdateMapPixelColor(size_t row, size_t column) {
+            map_model_[row][column] = 1;
+        }
+
         size_t GameMap::GenerateColorNumber() {
             return rand() % kTotalColorNumbers;
         }

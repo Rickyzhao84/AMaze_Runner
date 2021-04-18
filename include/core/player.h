@@ -8,17 +8,16 @@ namespace visualizer_app {
         
         Player();
         
-        void MoveLeft();
+        void MoveLeft(Location location_);
         
-        void MoveRight(size_t dimension);
+        void MoveRight(size_t dimension, Location location_);
         
-        void MoveUp();
+        void MoveUp(Location location_);
         
-        void MoveDown(size_t dimension);
+        void MoveDown(size_t dimension, Location location_);
         
     private:
 
-        Location location_;
         size_t dimension_;
         
     };

@@ -23,6 +23,14 @@ namespace visualizer_app {
             ci::app::setWindowSize((int) kWindowSize + 200, (int) kWindowSize);
             game_map_.CreateNodes();
             game_map_.CreateMapModel();
+            for (size_t i = 0; i < kDimension; i++) {
+                for (size_t j = 0; j < kDimension; j++) {
+                    if (game_map_.map_model_[i][j] == 1) {
+                        location_.SetXCoord(i);
+                        location_.SetYCoord(j);
+                    }
+                }
+            }
         }
 
         void VisualizerApp::draw() {
@@ -36,16 +44,20 @@ namespace visualizer_app {
         void VisualizerApp::keyDown(ci::app::KeyEvent event) {
             switch (event.getCode()) {
                 case ci::app::KeyEvent::KEY_LEFT: {
-                    player_.MoveLeft();
+                    player_.MoveLeft(location_);
+                    game_map_.UpdateMapPixelColor(location_.GetXCoord(), location_.GetYCoord());
                 }
                 case ci::app::KeyEvent::KEY_RIGHT: {
-                    player_.MoveRight(kDimension);
+                    player_.MoveRight(kDimension, location_);
+                    game_map_.UpdateMapPixelColor(location_.GetXCoord(), location_.GetYCoord());
                 }
                 case ci::app::KeyEvent::KEY_DOWN: {
-                    player_.MoveDown(kDimension);
+                    player_.MoveDown(kDimension, location_);
+                    game_map_.UpdateMapPixelColor(location_.GetXCoord(), location_.GetYCoord());
                 }
                 case ci::app::KeyEvent::KEY_UP: {
-                    player_.MoveUp();
+                    player_.MoveUp(location_);
+                    game_map_.UpdateMapPixelColor(location_.GetXCoord(), location_.GetYCoord());
                 }
             }
         }
