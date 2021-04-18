@@ -4,6 +4,7 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "game_map.h"
+#include <core/Location.h>
 
 
 namespace visualizer_app {
@@ -25,7 +26,6 @@ namespace visualizer_app {
 
         private:
             GameMap game_map_;
-
         };
 
 

@@ -6,6 +6,10 @@ namespace visualizer_app {
         x_coord_ = row;
         y_coord_ = column;
     }
+    
+    Location::Location() {
+        
+    }
 
     const size_t &Location::GetXCoord() const {
         return x_coord_;

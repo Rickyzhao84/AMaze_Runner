@@ -9,6 +9,8 @@ namespace visualizer_app {
     public:
         
         Location(size_t row, size_t column);
+        
+        Location();
 
         const size_t &GetXCoord() const;
 

@@ -7,6 +7,7 @@
 #include "cinder/ImageIo.h"
 #include "cinder/gl/Texture.h"
 #include <visualizer/visualizer_app.h>
+#include <core/Location.h>
 
 namespace visualizer_app {
 
@@ -35,13 +36,12 @@ namespace visualizer_app {
         void VisualizerApp::keyDown(ci::app::KeyEvent event) {
             switch (event.getCode()) {
                 case ci::app::KeyEvent::KEY_LEFT: {
-
                 }
                 case ci::app::KeyEvent::KEY_RIGHT: {
-
+                    
                 }
                 case ci::app::KeyEvent::KEY_DOWN: {
-
+                    
                 }
                 case ci::app::KeyEvent::KEY_UP: {
 
