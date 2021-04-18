@@ -44,19 +44,31 @@ namespace visualizer_app {
         void VisualizerApp::keyDown(ci::app::KeyEvent event) {
             switch (event.getCode()) {
                 case ci::app::KeyEvent::KEY_LEFT: {
-                    player_.MoveLeft(location_);
+                    size_t original_y_coord = location_.GetYCoord();
+                    if (original_y_coord != 0) {
+                        location_.SetYCoord(original_y_coord - 1);
+                    }
                     game_map_.UpdateMapPixelColor(location_.GetXCoord(), location_.GetYCoord());
                 }
                 case ci::app::KeyEvent::KEY_RIGHT: {
-                    player_.MoveRight(kDimension, location_);
+                    size_t original_y_coord = location_.GetYCoord();
+                    if (original_y_coord != 0) {
+                        location_.SetYCoord(original_y_coord + 1);
+                    }
                     game_map_.UpdateMapPixelColor(location_.GetXCoord(), location_.GetYCoord());
                 }
                 case ci::app::KeyEvent::KEY_DOWN: {
-                    player_.MoveDown(kDimension, location_);
+                    size_t original_x_coord = location_.GetXCoord();
+                    if (original_x_coord != 0) {
+                        location_.SetXCoord(original_x_coord + 1);
+                    }
                     game_map_.UpdateMapPixelColor(location_.GetXCoord(), location_.GetYCoord());
                 }
                 case ci::app::KeyEvent::KEY_UP: {
-                    player_.MoveUp(location_);
+                    size_t original_x_coord = location_.GetXCoord();
+                    if (original_x_coord != 0) {
+                        location_.SetXCoord(original_x_coord - 1);
+                    }
                     game_map_.UpdateMapPixelColor(location_.GetXCoord(), location_.GetYCoord());
                 }
             }
