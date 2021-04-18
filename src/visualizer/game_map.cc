@@ -44,6 +44,8 @@ namespace visualizer_app {
         }
         
         void GameMap::CreateMapModel() {
+
+            srand(static_cast<unsigned>(time(0)));
             
             size_t random_point_x_coord = rand() % (dimension_);
             size_t random_point_y_coord = rand() % (dimension_);
