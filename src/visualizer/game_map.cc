@@ -49,6 +49,9 @@ namespace visualizer_app {
             size_t random_point_y_coord = rand() % (dimension_);
             //starting_node represented by 1
             map_model_[random_point_x_coord][random_point_y_coord] = 1;
+            current_location_x_ = random_point_x_coord;
+            current_location_y_ = random_point_y_coord;
+            
             random_point_x_coord = rand() % (dimension_);
             random_point_y_coord = rand() % (dimension_);
             if (map_model_[random_point_x_coord][random_point_y_coord] != 1) {

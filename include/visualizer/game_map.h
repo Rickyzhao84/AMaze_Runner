@@ -47,6 +47,8 @@ namespace visualizer_app {
             StartingNode starting_node_;
             EndingNode ending_node_;
             std::vector<std::vector<size_t>> map_model_;
+            size_t current_location_x_;
+            size_t current_location_y_;
         };
 
     }
