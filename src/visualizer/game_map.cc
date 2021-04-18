@@ -23,8 +23,6 @@ namespace visualizer_app {
                                                                   row * pixel_side_length);
                     vec2 bottom_right_corner = pixel_top_left + vec2(pixel_side_length, pixel_side_length);
                     ci::Rectf grid(pixel_top_left, bottom_right_corner);
-                    ci::gl::drawSolidRect(grid);
-                    ci::gl::color(ci::Color("lime"));
                     if (map_model_[row][column] == 1) {
                         ci::gl::color(starting_node_.GetNodeColor());
                     } else if (map_model_[row][column] == 2) {
@@ -32,8 +30,11 @@ namespace visualizer_app {
                     } else if (map_model_[row][column] == 3) {
                         ci::gl::color(kObstacleColor);
                     } else {
-                        ci::gl::color(ci::Color("darkblue"));
+                        ci::gl::color(ci::Color("black"));
                     }
+                    ci::gl::drawSolidRect(grid);
+                    ci::gl::color(ci::Color("white"));
+                    
                     ci::gl::drawStrokedRect(grid);
                 }
             }

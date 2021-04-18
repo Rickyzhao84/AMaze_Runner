@@ -10,7 +10,7 @@ namespace visualizer_app {
 
     namespace visualizer {
 
-        const size_t kDimension = 35;
+        const size_t kDimension = 25;
 
         class VisualizerApp : public ci::app::App {
         public:

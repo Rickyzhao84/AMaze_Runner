@@ -20,13 +20,13 @@ namespace visualizer_app {
                 : game_map_(glm::vec2(kTopLeftCornerCoordinate, kTopLeftCornerCoordinate),
                             kDimension, kWindowSize) {
             ci::app::setWindowSize((int) kWindowSize + 200, (int) kWindowSize);
+            game_map_.CreateNodes();
+            game_map_.CreateMapModel();
         }
 
         void VisualizerApp::draw() {
             ci::Color8u color("turquoise");
             ci::gl::clear(color);
-            game_map_.CreateNodes();
-            game_map_.CreateMapModel();
             game_map_.Draw();
 //            ci::gl::TextureRef look_up = ci::gl::Texture::create(
 //                    ci::loadImage("C:/Users/ricky/Cinder/testing/final-project-Rickyzhao84/looking_down.jpg"));

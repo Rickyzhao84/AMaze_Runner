@@ -32,7 +32,7 @@ namespace visualizer_app {
             
             const static size_t kNumOfObstacleNodes = 20;
             
-            const ci::Color kObstacleColor = "black";
+            const ci::Color kObstacleColor = "red";
             
             const ci::Color kEndingNodeColor = "green";
             
