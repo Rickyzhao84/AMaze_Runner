@@ -12,11 +12,11 @@ namespace visualizer_app {
         
         Location();
 
-        const size_t &GetXCoord() const;
+        const size_t GetXCoord() const;
 
         void SetXCoord(const size_t &xCoord);
 
-        const size_t &GetYCoord() const;
+        const size_t GetYCoord() const;
 
         void SetYCoord(const size_t &yCoord);
 

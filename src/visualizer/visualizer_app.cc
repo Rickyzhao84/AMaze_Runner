@@ -49,6 +49,7 @@ namespace visualizer_app {
                         location_.SetYCoord(original_y_coord - 1);
                     }
                     game_map_.UpdateMapPixelColor(location_.GetXCoord(), location_.GetYCoord());
+                    break;
                 }
                 case ci::app::KeyEvent::KEY_RIGHT: {
                     size_t original_y_coord = location_.GetYCoord();
@@ -56,6 +57,7 @@ namespace visualizer_app {
                         location_.SetYCoord(original_y_coord + 1);
                     }
                     game_map_.UpdateMapPixelColor(location_.GetXCoord(), location_.GetYCoord());
+                    break;
                 }
                 case ci::app::KeyEvent::KEY_DOWN: {
                     size_t original_x_coord = location_.GetXCoord();
@@ -63,6 +65,7 @@ namespace visualizer_app {
                         location_.SetXCoord(original_x_coord + 1);
                     }
                     game_map_.UpdateMapPixelColor(location_.GetXCoord(), location_.GetYCoord());
+                    break;
                 }
                 case ci::app::KeyEvent::KEY_UP: {
                     size_t original_x_coord = location_.GetXCoord();
@@ -70,8 +73,13 @@ namespace visualizer_app {
                         location_.SetXCoord(original_x_coord - 1);
                     }
                     game_map_.UpdateMapPixelColor(location_.GetXCoord(), location_.GetYCoord());
+                    break;
                 }
+                
             }
+            std::cout << location_.GetXCoord() << " ";
+            std::cout << location_.GetYCoord() << " " << std::endl;
+            
         }
 
     }
