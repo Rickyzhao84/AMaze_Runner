@@ -10,7 +10,6 @@
 
 namespace visualizer_app {
 
-    namespace visualizer {
 
         class VisualizerApp : public ci::app::App {
         public:
@@ -23,13 +22,13 @@ namespace visualizer_app {
             const size_t kDimension = 25;
             const double kTopLeftCornerCoordinate = 50;
             const double kWindowSize = 1000;
+            Location starting_location_;
 
         private:
             GameMap game_map_;
             Player player_;
-            Location location_;
         };
 
 
-    }
+    
 }

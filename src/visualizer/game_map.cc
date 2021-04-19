@@ -2,7 +2,6 @@
 
 namespace visualizer_app {
     
-    namespace visualizer {
 
         using glm::vec2;
         using std::vector;
@@ -25,9 +24,9 @@ namespace visualizer_app {
                     ci::Rectf grid(pixel_top_left, bottom_right_corner);
                     if (map_model_[row][column] == 1) {
                         ci::gl::color(starting_node_.GetNodeColor());
-//                        ci::gl::TextureRef look_up = ci::gl::Texture::create(
-//                        ci::loadImage("C:/Users/ricky/Cinder/testing/final-project-Rickyzhao84/looking_down.jpg"));
-//                        ci::gl::draw(look_up);
+                        ci::gl::TextureRef look_up = ci::gl::Texture::create(
+                        ci::loadImage("C:/Users/ricky/Cinder/testing/final-project-Rickyzhao84/looking_down.jpg"));
+                        ci::gl::draw(look_up);
                     } else if (map_model_[row][column] == 2) {
                         ci::gl::color(ending_node_.GetNodeColor());
                     } else if (map_model_[row][column] == 3) {
@@ -93,5 +92,5 @@ namespace visualizer_app {
         size_t GameMap::GenerateColorNumber() {
             return rand() % kTotalColorNumbers;
         }
-    }   
+     
 }

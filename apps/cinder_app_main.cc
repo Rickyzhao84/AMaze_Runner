@@ -1,6 +1,6 @@
 #include <visualizer/visualizer_app.h>
 
-using visualizer_app::visualizer::VisualizerApp;
+using visualizer_app::VisualizerApp;
 
 void prepareSettings(VisualizerApp::Settings* settings) {
     settings->setResizable(false);

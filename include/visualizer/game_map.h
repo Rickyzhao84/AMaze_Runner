@@ -7,8 +7,7 @@
 
 
 namespace visualizer_app {
-    
-    namespace visualizer {
+
 
         class GameMap {
 
@@ -54,5 +53,5 @@ namespace visualizer_app {
             size_t current_location_y_;
         };
 
-    }
+    
 }
