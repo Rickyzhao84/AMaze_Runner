@@ -11,20 +11,20 @@ namespace visualizer_app {
         
     }
 
-    const size_t Location::GetXCoord() const {
-        return x_coord_;
-    }
-
-    void Location::SetXCoord(const size_t &xCoord) {
-        x_coord_ = xCoord;
-    }
-
     const size_t Location::GetYCoord() const {
         return y_coord_;
     }
 
     void Location::SetYCoord(const size_t &yCoord) {
         y_coord_ = yCoord;
+    }
+
+    const size_t Location::GetXCoord() const {
+        return x_coord_;
+    }
+
+    void Location::SetXCoord(const size_t &xCoord) {
+        x_coord_ = xCoord;
     }
 
 }
