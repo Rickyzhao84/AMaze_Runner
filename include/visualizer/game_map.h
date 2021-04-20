@@ -45,7 +45,7 @@ namespace visualizer_app {
             void UpdateMapPixelColor(size_t row, size_t column);
 
             /**
-             * Create animation
+             * Create animation (yet to be implemented)
              */
             void CreateAnimation();
 
@@ -59,7 +59,7 @@ namespace visualizer_app {
             
             /**
              * Generate a random color that will be used to create animations
-             * @return 
+             * @return random size_t to create colors
              */
             size_t GenerateColorNumber();
 
@@ -89,7 +89,7 @@ namespace visualizer_app {
             EndingNode ending_node_;
             size_t current_location_x_;
             size_t current_location_y_;
-            std::vector<glm::vec2> forbidden_pixels_;
+            std::vector<glm::vec2> obstacle_pixels_;
         };
 
     

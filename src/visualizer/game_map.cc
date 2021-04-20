@@ -77,7 +77,7 @@ namespace visualizer_app {
                 if (map_model_[random_point_x_coord][random_point_y_coord] != 1 &&
                     map_model_[random_point_x_coord][random_point_y_coord] != 2) {
                     //obstacle_node represented by 3
-                    forbidden_pixels_.push_back(vec2(random_point_x_coord,random_point_y_coord));
+                    obstacle_pixels_.push_back(vec2(random_point_x_coord, random_point_y_coord));
                     map_model_[random_point_x_coord][random_point_y_coord] = 3;
                     obstacle_nodes_.pop_back();
                 }
@@ -85,21 +85,25 @@ namespace visualizer_app {
         }
         
         void GameMap::CreateNodes() {
+            //Set color to nodes
             starting_node_.SetNodeColor(kStartingNodeColor);
             ending_node_.SetNodeColor(kEndingNodeColor);
+            
             for (size_t i = 0; i < kNumOfObstacleNodes; i++) {
+                //Create kNumOfObstacleNodes ObstacleNodes and set color to them 
                 ObstacleNode new_obstacle(kObstacleColor);
                 obstacle_nodes_.push_back(new_obstacle);
             }
         }
 
         void GameMap::CreateAnimation() {
-
+            //Yet to be implemented
         }
         
         bool GameMap::IsPixelAnObstacle(size_t row, size_t column) {
-            for (size_t i = 0; i < forbidden_pixels_.size(); i++) {
-                if (forbidden_pixels_[i].y == row && forbidden_pixels_[i].x == column) {
+            //Check if the x and y matches the obstacle pixels
+            for (size_t i = 0; i < obstacle_pixels_.size(); i++) {
+                if (obstacle_pixels_[i].y == row && obstacle_pixels_[i].x == column) {
                     return true;
                 }
             }
@@ -107,6 +111,7 @@ namespace visualizer_app {
         }
 
         void GameMap::UpdateMapPixelColor(size_t row, size_t column) {
+            //Change the pixel to a walked pixel
             map_model_[row][column] = 1;
         }
 
