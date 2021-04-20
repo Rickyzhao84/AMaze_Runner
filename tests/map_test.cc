@@ -1,11 +1,6 @@
 #include <catch2/catch.hpp>
 
 #include "cinder/app/App.h"
-#include "cinder/app/RendererGl.h"
-#include "cinder/gl/gl.h"
-#include "cinder/Log.h"
-#include "cinder/ImageIo.h"
-#include "cinder/gl/Texture.h"
 #include <visualizer/visualizer_app.h>
 #include <core/Location.h>
 #include <visualizer/game_map.h>

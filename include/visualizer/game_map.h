@@ -13,20 +13,46 @@ namespace visualizer_app {
 
         public:
 
+            /**
+             * Constructor of a game map
+             * @param top_left_corner of game map
+             * @param dimension number of rows and columns of pixels in the map
+             * @param map_size is size of map
+             */
             GameMap(const glm::vec2 &top_left_corner, size_t dimension,
                     double map_size);
-            
 
+            /**
+             * Draw obstacles and their colors on the map
+             */
             void Draw() const;
             
+            /**
+             * Create different nodes that will be placed on the map
+             */
             void CreateNodes();
             
+            /**
+             * Create the 2d vector map model that represents the map
+             */
             void CreateMapModel();
             
+            /**
+             * Set pixels the user has walked on to the color of starting node
+             * @param row x coord
+             * @param column y coord
+             */
             void UpdateMapPixelColor(size_t row, size_t column);
 
+            /**
+             * Create animation
+             */
             void CreateAnimation();
 
+            /**
+             * Generate a random color that will be used to create animations
+             * @return 
+             */
             size_t GenerateColorNumber();
 
             const static size_t kTotalColorNumbers = 256;

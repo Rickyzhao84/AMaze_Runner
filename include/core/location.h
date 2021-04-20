@@ -8,8 +8,16 @@ namespace visualizer_app {
         
     public:
         
+        /**
+         * Used to initialize a location on the map
+         * @param row x coord
+         * @param column y coord
+         */
         Location(size_t row, size_t column);
         
+        /**
+         * Default constructor used to create a location
+         */
         Location();
 
         const size_t GetYCoord() const;

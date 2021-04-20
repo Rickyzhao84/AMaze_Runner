@@ -13,10 +13,21 @@ namespace visualizer_app {
 
         class VisualizerApp : public ci::app::App {
         public:
+            
+            /**
+             * Constructor of the app
+             */
             VisualizerApp();
 
+            /**
+             * Draw the application and related items on the screen
+             */
             void draw() override;
 
+            /**
+             * When user clicks down on a key
+             * @param event 
+             */
             void keyDown(ci::app::KeyEvent event) override;
 
             const size_t kDimension = 25;
