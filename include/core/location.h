@@ -16,7 +16,7 @@ namespace visualizer_app {
         Location(size_t row, size_t column);
         
         /**
-         * Default constructor used to create a location
+         * Default constructor used to create a new location
          */
         Location();
 
