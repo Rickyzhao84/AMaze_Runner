@@ -92,5 +92,13 @@ namespace visualizer_app {
         size_t GameMap::GenerateColorNumber() {
             return rand() % kTotalColorNumbers;
         }
-     
+
+    size_t GameMap::GetCurrentLocationX() const {
+        return current_location_x_;
+    }
+
+    size_t GameMap::GetCurrentLocationY() const {
+        return current_location_y_;
+    }
+
 }

@@ -39,6 +39,10 @@ namespace visualizer_app {
             
             const ci::Color kStartingNodeColor = "yellow";
 
+            size_t GetCurrentLocationX() const;
+
+            size_t GetCurrentLocationY() const;
+
             std::vector<std::vector<size_t>> map_model_;
 
         private:
