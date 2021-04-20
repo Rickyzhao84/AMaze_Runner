@@ -18,22 +18,32 @@ namespace visualizer_app {
             for (size_t row = 0; row < dimension_; row++) {
                 for (size_t column = 0; column < dimension_; column++) {
                     double pixel_side_length = map_size_ / dimension_;
+                    //Find the top left of pixel map from top left of window
                     vec2 pixel_top_left = top_left_corner_ + vec2(column * pixel_side_length,
                                                                   row * pixel_side_length);
+                    
                     vec2 bottom_right_corner = pixel_top_left + vec2(pixel_side_length, pixel_side_length);
+                    //Draw the big grid which is the size of the square
                     ci::Rectf grid(pixel_top_left, bottom_right_corner);
+                    
+                    //If the node at the pixel is starting node or a walked node
                     if (map_model_[row][column] == 1) {
                         ci::gl::color(starting_node_.GetNodeColor());
                         ci::gl::TextureRef look_up = ci::gl::Texture::create(
                         ci::loadImage("C:/Users/ricky/Cinder/testing/final-project-Rickyzhao84/looking_down.jpg"));
                         ci::gl::draw(look_up);
+                        
                     } else if (map_model_[row][column] == 2) {
+                        //If the node at the pixel is ending node
                         ci::gl::color(ending_node_.GetNodeColor());
                     } else if (map_model_[row][column] == 3) {
+                        //If the node at the pixel is an obstacle node
                         ci::gl::color(kObstacleColor);
                     } else {
                         ci::gl::color(ci::Color("black"));
                     }
+                    
+                    //Draw the small pixel grid
                     ci::gl::drawSolidRect(grid);
                     ci::gl::color(ci::Color("white"));
                     
@@ -63,9 +73,11 @@ namespace visualizer_app {
             while (!obstacle_nodes_.empty()) {
                 size_t random_point_x_coord = rand() % (dimension_);
                 size_t random_point_y_coord = rand() % (dimension_);
+                
                 if (map_model_[random_point_x_coord][random_point_y_coord] != 1 &&
                     map_model_[random_point_x_coord][random_point_y_coord] != 2) {
                     //obstacle_node represented by 3
+                    forbidden_pixels_.push_back(vec2(random_point_x_coord,random_point_y_coord));
                     map_model_[random_point_x_coord][random_point_y_coord] = 3;
                     obstacle_nodes_.pop_back();
                 }
@@ -83,6 +95,15 @@ namespace visualizer_app {
 
         void GameMap::CreateAnimation() {
 
+        }
+        
+        bool GameMap::IsPixelAnObstacle(size_t row, size_t column) {
+            for (size_t i = 0; i < forbidden_pixels_.size(); i++) {
+                if (forbidden_pixels_[i].y == row && forbidden_pixels_[i].x == column) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         void GameMap::UpdateMapPixelColor(size_t row, size_t column) {

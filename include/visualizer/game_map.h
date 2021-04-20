@@ -50,6 +50,14 @@ namespace visualizer_app {
             void CreateAnimation();
 
             /**
+             * Check if the pixel user wants to move to is an obstacle node
+             * @param row x coord
+             * @param column y coord
+             * @return true if it's an obstacle, false if it's not
+             */
+            bool IsPixelAnObstacle(size_t row, size_t column);
+            
+            /**
              * Generate a random color that will be used to create animations
              * @return 
              */
@@ -72,7 +80,7 @@ namespace visualizer_app {
             std::vector<std::vector<size_t>> map_model_;
 
         private:
-
+            
             glm::vec2 top_left_corner_;
             size_t dimension_;
             double map_size_;
@@ -81,6 +89,7 @@ namespace visualizer_app {
             EndingNode ending_node_;
             size_t current_location_x_;
             size_t current_location_y_;
+            std::vector<glm::vec2> forbidden_pixels_;
         };
 
     
