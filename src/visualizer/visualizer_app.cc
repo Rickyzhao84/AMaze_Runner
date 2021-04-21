@@ -41,9 +41,6 @@ namespace visualizer_app {
 
         void VisualizerApp::keyDown(ci::app::KeyEvent event) {
             switch (event.getCode()) {
-                if (1 == 1) {
-                    //Do something when user wins the game
-                }
                 case ci::app::KeyEvent::KEY_LEFT: {
                     size_t original_x_coord = starting_location_.GetXCoord();
                     //Can't move when user is about to go out of bounds

@@ -33,9 +33,10 @@ namespace visualizer_app {
          * @param location_ 
          */
         void MoveDown(size_t dimension, Location location_);
+
+        Location location_;
         
     private:
-
         size_t dimension_;
         
     };
