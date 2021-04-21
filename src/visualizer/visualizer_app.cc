@@ -88,10 +88,6 @@ namespace visualizer_app {
                     
                     break;
                 }
-                
             }
-            
         }
-
-    
 }
