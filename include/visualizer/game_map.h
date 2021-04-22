@@ -27,8 +27,19 @@ namespace visualizer_app {
              */
             void Draw() const;
             
+            /**
+             * Draw the different nodes for the GameMap on to the screen
+             * @param row x coord
+             * @param column y coord
+             */
             void DrawNodes(size_t row, size_t column) const;
             
+            /**
+             * Draw an image on to the screen based on the coordinates given and filepath
+             * @param top_left x coordinate
+             * @param bottom_right y coordinate
+             * @param path is the image file
+             */
             void DrawImage(glm::vec2 top_left, glm::vec2 bottom_right, std::string path) const;
             
             /**
