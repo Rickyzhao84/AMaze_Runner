@@ -52,7 +52,7 @@ namespace visualizer_app {
                     if (original_x_coord != 0 && 
                         !game_map_.IsPixelAnObstacle(original_x_coord - 1, starting_location_.GetYCoord())) {
                         starting_location_.SetXCoord(original_x_coord - 1);
-                        game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord());
+                        game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), 3);
                     }
                     
                     break;
@@ -63,7 +63,7 @@ namespace visualizer_app {
                     if (original_x_coord != kDimension - 1 &&
                         !game_map_.IsPixelAnObstacle(original_x_coord + 1, starting_location_.GetYCoord())) {
                         starting_location_.SetXCoord(original_x_coord + 1);
-                        game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord());
+                        game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), 4);
                     }
                     
                     break;
@@ -74,7 +74,7 @@ namespace visualizer_app {
                     if (original_y_coord != kDimension - 1 &&
                             !game_map_.IsPixelAnObstacle(starting_location_.GetXCoord(), original_y_coord + 1)) {
                         starting_location_.SetYCoord(original_y_coord + 1);
-                        game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord());
+                        game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), 2);
                     }
                     
                     break;
@@ -85,7 +85,7 @@ namespace visualizer_app {
                     if (original_y_coord != 0 &&
                             !game_map_.IsPixelAnObstacle(starting_location_.GetXCoord(), original_y_coord - 1)) {
                         starting_location_.SetYCoord(original_y_coord - 1);
-                        game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord());
+                        game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), 1);
                     }
                     
                     break;

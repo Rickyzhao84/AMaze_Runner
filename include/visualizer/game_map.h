@@ -46,7 +46,7 @@ namespace visualizer_app {
              * @param row x coord
              * @param column y coord
              */
-            void UpdateMapPixelColor(size_t row, size_t column);
+            void UpdateMapPixelColor(size_t row, size_t column, size_t next_image);
 
             /**
              * Create animation (yet to be implemented)
@@ -77,13 +77,15 @@ namespace visualizer_app {
             
             const ci::Color kStartingNodeColor = "yellow";
             
-            std::string kCharacterImage = "../../../looking_down.jpg";
+            std::string kLookDownImage = "../../../looking_down.jpg";
             
             std::string kLookUpImage = "../../../looking_up.jpg";
             
             std::string kLookLeftImage = "../../../looking_left.jpg";
             
             std::string kLookRightImage = "../../../looking_right.jpg";
+            
+            size_t determine_next_image = 1;
 
             size_t GetCurrentLocationX() const;
 
