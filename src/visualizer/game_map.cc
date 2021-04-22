@@ -5,6 +5,7 @@ namespace visualizer_app {
 
         using glm::vec2;
         using std::vector;
+        using std::string;
 
         GameMap::GameMap(const glm::vec2 &top_left_corner, size_t dimension, double map_size)
                 : starting_node_(cinder::Color()), ending_node_(cinder::Color()) {
@@ -26,19 +27,7 @@ namespace visualizer_app {
                     //Draw the big grid which is the size of the square
                     ci::Rectf grid(pixel_top_left, bottom_right_corner);
                     
-                    //If the node at the pixel is starting node or a walked node
-                    if (map_model_[row][column] == 1) {
-                        ci::gl::color(starting_node_.GetNodeColor());
-                        
-                    } else if (map_model_[row][column] == 2) {
-                        //If the node at the pixel is ending node
-                        ci::gl::color(ending_node_.GetNodeColor());
-                    } else if (map_model_[row][column] == 3) {
-                        //If the node at the pixel is an obstacle node
-                        ci::gl::color(kObstacleColor);
-                    } else {
-                        ci::gl::color(ci::Color("black"));
-                    }
+                    DrawNodes(row, column);
                     
                     //Draw the small pixel grid
                     ci::gl::drawSolidRect(grid);
@@ -47,12 +36,36 @@ namespace visualizer_app {
                     ci::gl::drawStrokedRect(grid);
                 }
             }
+            
+            double pixel_side_length = map_size_ / dimension_;
+            vec2 pixel_top_left = top_left_corner_ + vec2(current_location_y_ * pixel_side_length,
+                                                          current_location_x_ * pixel_side_length);
+            vec2 bottom_right = pixel_top_left + vec2(pixel_side_length, pixel_side_length);
+            DrawImage(pixel_top_left, bottom_right, kCharacterImage);
         }
         
-        void GameMap::DrawCharacter() const {
-            ci::gl::TextureRef look_up = ci::gl::Texture::create(
-                    ci::loadImage("C:/Users/ricky/Cinder/testing/final-project-Rickyzhao84/looking_down.jpg"));
-            ci::gl::draw(look_up);
+        void GameMap::DrawNodes(size_t row, size_t column) const {
+            //If the node at the pixel is starting node or a walked node
+            if (map_model_[row][column] == 1) {
+                ci::gl::color(starting_node_.GetNodeColor());
+
+            } else if (map_model_[row][column] == 2) {
+                //If the node at the pixel is ending node
+                ci::gl::color(ending_node_.GetNodeColor());
+            } else if (map_model_[row][column] == 3) {
+                //If the node at the pixel is an obstacle node
+                ci::gl::color(kObstacleColor);
+            } else {
+                ci::gl::color(ci::Color("black"));
+            }
+        }
+        
+        void GameMap::DrawImage(vec2 top_left, vec2 bottom_right, string path) const {
+            ci::gl::TextureRef texture = ci::gl::Texture::create(
+                    ci::loadImage(path));
+            ci::Rectf object(top_left, bottom_right);
+            
+            ci::gl::draw(texture, object);
             //map_model_[current_location_x_][current_location_y_];
         }
         
@@ -117,6 +130,8 @@ namespace visualizer_app {
         void GameMap::UpdateMapPixelColor(size_t row, size_t column) {
             //Change the pixel to a walked pixel
             map_model_[row][column] = 1;
+            current_location_y_ = column;
+            current_location_x_ = row;
         }
 
         size_t GameMap::GenerateColorNumber() {

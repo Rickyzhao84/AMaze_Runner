@@ -27,7 +27,9 @@ namespace visualizer_app {
              */
             void Draw() const;
             
-            void DrawCharacter() const;
+            void DrawNodes(size_t row, size_t column) const;
+            
+            void DrawImage(glm::vec2 top_left, glm::vec2 bottom_right, std::string path) const;
             
             /**
              * Create different nodes that will be placed on the map
@@ -74,6 +76,14 @@ namespace visualizer_app {
             const ci::Color kEndingNodeColor = "green";
             
             const ci::Color kStartingNodeColor = "yellow";
+            
+            std::string kCharacterImage = "../../../looking_down.jpg";
+            
+            std::string kLookUpImage = "../../../looking_up.jpg";
+            
+            std::string kLookLeftImage = "../../../looking_left.jpg";
+            
+            std::string kLookRightImage = "../../../looking_right.jpg";
 
             size_t GetCurrentLocationX() const;
 
