@@ -8,6 +8,7 @@
 #include "cinder/gl/Texture.h"
 #include <visualizer/visualizer_app.h>
 #include <core/Location.h>
+#include "cinder/app/AppBase.h"
 
 namespace visualizer_app {
 
@@ -15,6 +16,9 @@ namespace visualizer_app {
         using ci::gl::TextureRef;
         using ci::Surface;
         using ci::gl::Texture;
+        using std::vector;
+        using glm::vec2;
+        
 
         VisualizerApp::VisualizerApp()
                 : game_map_(glm::vec2(kTopLeftCornerCoordinate, kTopLeftCornerCoordinate),
@@ -37,6 +41,7 @@ namespace visualizer_app {
             ci::Color8u color("turquoise");
             ci::gl::clear(color);
             game_map_.Draw();
+            
         }
 
         void VisualizerApp::keyDown(ci::app::KeyEvent event) {

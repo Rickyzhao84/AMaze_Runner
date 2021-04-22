@@ -27,6 +27,8 @@ namespace visualizer_app {
              */
             void Draw() const;
             
+            void DrawCharacter() const;
+            
             /**
              * Create different nodes that will be placed on the map
              */

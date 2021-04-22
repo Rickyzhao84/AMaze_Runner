@@ -29,9 +29,6 @@ namespace visualizer_app {
                     //If the node at the pixel is starting node or a walked node
                     if (map_model_[row][column] == 1) {
                         ci::gl::color(starting_node_.GetNodeColor());
-                        ci::gl::TextureRef look_up = ci::gl::Texture::create(
-                        ci::loadImage("C:/Users/ricky/Cinder/testing/final-project-Rickyzhao84/looking_down.jpg"));
-                        ci::gl::draw(look_up);
                         
                     } else if (map_model_[row][column] == 2) {
                         //If the node at the pixel is ending node
@@ -50,6 +47,13 @@ namespace visualizer_app {
                     ci::gl::drawStrokedRect(grid);
                 }
             }
+        }
+        
+        void GameMap::DrawCharacter() const {
+            ci::gl::TextureRef look_up = ci::gl::Texture::create(
+                    ci::loadImage("C:/Users/ricky/Cinder/testing/final-project-Rickyzhao84/looking_down.jpg"));
+            ci::gl::draw(look_up);
+            //map_model_[current_location_x_][current_location_y_];
         }
         
         void GameMap::CreateMapModel() {
