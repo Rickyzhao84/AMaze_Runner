@@ -49,6 +49,8 @@ namespace visualizer_app {
              */
             void DrawImage(glm::vec2 top_left, glm::vec2 bottom_right, std::string path) const;
             
+            void FindNextDirection(double pixel_side_length) const;
+            
             /**
              * Create different nodes that will be placed on the map
              */

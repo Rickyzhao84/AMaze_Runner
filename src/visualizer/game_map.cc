@@ -16,9 +16,10 @@ namespace visualizer_app {
         }
 
         void GameMap::Draw() const {
+            double pixel_side_length = map_size_ / dimension_;
             for (size_t row = 0; row < dimension_; row++) {
                 for (size_t column = 0; column < dimension_; column++) {
-                    double pixel_side_length = map_size_ / dimension_;
+                    
                     //Find the top left of pixel map from top left of window
                     vec2 pixel_top_left = top_left_corner_ + vec2(column * pixel_side_length,
                                                                   row * pixel_side_length);
@@ -39,8 +40,11 @@ namespace visualizer_app {
                     }
                 }
             }
+            FindNextDirection(pixel_side_length);
             
-            double pixel_side_length = map_size_ / dimension_;
+        }
+        
+        void GameMap::FindNextDirection(double pixel_side_length) const {
             vec2 pixel_top_left = top_left_corner_ + vec2(current_location_y_ * pixel_side_length,
                                                           current_location_x_ * pixel_side_length);
             vec2 bottom_right = pixel_top_left + vec2(pixel_side_length, pixel_side_length);
@@ -53,7 +57,6 @@ namespace visualizer_app {
             } else if (determine_next_image == 4) {
                 DrawImage(pixel_top_left, bottom_right, kLookRightImage);
             }
-            
         }
         
         NodeLabel GameMap::DrawNodes(size_t row, size_t column) const {
