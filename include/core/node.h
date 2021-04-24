@@ -50,5 +50,11 @@ namespace visualizer_app {
          */
         ObstacleNode(ci::Color nodeColor);
     };
+    
+    class MonsterNode : public Node {
+    public:
+        
+        MonsterNode(ci::Color nodeColor);
+    };
 
 }

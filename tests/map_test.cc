@@ -61,6 +61,9 @@ TEST_CASE("Map generates a different starting point each game") {
 
 TEST_CASE("Player can move using the arrow keys") {
     SECTION("Move up") {
-
+        visualizer_app::VisualizerApp app;
+        app.starting_location_.SetXCoord(5);
+        app.ChangeKeyLeft();
+        REQUIRE(app.starting_location_.GetXCoord() == 4);
     }
 }

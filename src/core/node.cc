@@ -25,4 +25,8 @@ namespace visualizer_app {
     ObstacleNode::ObstacleNode(ci::Color nodeColor) : Node(nodeColor) {
         
     }
+    
+    MonsterNode::MonsterNode(ci::Color nodeColor) : Node(nodeColor) {
+        
+    }
 }

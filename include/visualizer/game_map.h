@@ -8,6 +8,12 @@
 
 namespace visualizer_app {
 
+    enum class NodeLabel {
+        StartingNode = 1,
+        EndingNode = 2,
+        ObstacleNode = 3,
+        MonsterNode = 4
+    };
 
         class GameMap {
 
@@ -87,6 +93,8 @@ namespace visualizer_app {
             const ci::Color kEndingNodeColor = "green";
             
             const ci::Color kStartingNodeColor = "yellow";
+            
+            std::string kMonsterImage = "../../../monster.jpg";
             
             std::string kLookDownImage = "../../../looking_down.jpg";
             
