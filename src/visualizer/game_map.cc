@@ -64,6 +64,8 @@ namespace visualizer_app {
             } else if (map_model_[row][column] == 3) {
                 //If the node at the pixel is an obstacle node
                 ci::gl::color(kObstacleColor);
+            } else if (map_model_[row][column] == 4) {
+                ci::gl::color(kMonsterNodeColor);
             } else {
                 ci::gl::color(ci::Color("black"));
             }
@@ -107,6 +109,20 @@ namespace visualizer_app {
                     obstacle_nodes_.pop_back();
                 }
             }
+
+            while (!monster_nodes_.empty()) {
+                size_t random_point_x_coord = rand() % (dimension_);
+                size_t random_point_y_coord = rand() % (dimension_);
+
+                if (map_model_[random_point_x_coord][random_point_y_coord] != 1 &&
+                    map_model_[random_point_x_coord][random_point_y_coord] != 2 &&
+                    map_model_[random_point_x_coord][random_point_y_coord] != 3) {
+                    
+                    monster_pixels_.push_back(vec2(random_point_x_coord, random_point_y_coord));
+                    map_model_[random_point_x_coord][random_point_y_coord] = 4;
+                    monster_nodes_.pop_back();
+                }
+            }
         }
         
         void GameMap::CreateNodes() {
@@ -118,6 +134,11 @@ namespace visualizer_app {
                 //Create kNumOfObstacleNodes ObstacleNodes and set color to them 
                 ObstacleNode new_obstacle(kObstacleColor);
                 obstacle_nodes_.push_back(new_obstacle);
+            }
+            
+            for (size_t i = 0; i < kNumOfMonsterNodes; i++) {
+                MonsterNode new_monster(kMonsterNodeColor);
+                monster_nodes_.push_back(new_monster);
             }
         }
 

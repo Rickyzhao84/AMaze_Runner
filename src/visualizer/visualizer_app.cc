@@ -23,7 +23,7 @@ namespace visualizer_app {
         VisualizerApp::VisualizerApp()
                 : game_map_(glm::vec2(kTopLeftCornerCoordinate, kTopLeftCornerCoordinate),
                             kDimension, kWindowSize) {
-            ci::app::setWindowSize((int) kWindowSize + 200, (int) kWindowSize);
+            ci::app::setWindowSize((int) kWindowSize + 250, (int) kWindowSize);
             game_map_.CreateNodes();
             game_map_.CreateMapModel();
             //Set starting_location_ same as the one in map_model_

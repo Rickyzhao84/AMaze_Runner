@@ -88,11 +88,15 @@ namespace visualizer_app {
             
             const static size_t kNumOfObstacleNodes = 20;
             
+            const static size_t kNumOfMonsterNodes = 3;
+            
             const ci::Color kObstacleColor = "red";
             
             const ci::Color kEndingNodeColor = "green";
             
             const ci::Color kStartingNodeColor = "yellow";
+            
+            const ci::Color kMonsterNodeColor = "white";
             
             std::string kMonsterImage = "../../../monster.jpg";
             
@@ -118,11 +122,13 @@ namespace visualizer_app {
             size_t dimension_;
             double map_size_;
             std::vector<ObstacleNode> obstacle_nodes_;
+            std::vector<MonsterNode> monster_nodes_;
             StartingNode starting_node_;
             EndingNode ending_node_;
             size_t current_location_x_;
             size_t current_location_y_;
             std::vector<glm::vec2> obstacle_pixels_;
+            std::vector<glm::vec2> monster_pixels_;
         };
 
     

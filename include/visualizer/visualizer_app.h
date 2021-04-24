@@ -39,7 +39,7 @@ namespace visualizer_app {
             void ChangeKeyRight();
 
             const size_t kDimension = 25;
-            const double kTopLeftCornerCoordinate = 50;
+            const double kTopLeftCornerCoordinate = 10;
             const double kWindowSize = 1000;
             Location starting_location_;
 
