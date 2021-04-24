@@ -49,6 +49,8 @@ namespace visualizer_app {
              */
             void DrawImage(glm::vec2 top_left, glm::vec2 bottom_right, std::string path) const;
             
+            void MoveMonsters();
+            
             void FindNextDirection(double pixel_side_length) const;
             
             /**
@@ -91,7 +93,7 @@ namespace visualizer_app {
             
             const static size_t kNumOfObstacleNodes = 20;
             
-            const static size_t kNumOfMonsterNodes = 3;
+            const static size_t kNumOfMonsterNodes = 1;
             
             const ci::Color kObstacleColor = "red";
             
@@ -121,6 +123,8 @@ namespace visualizer_app {
 
             std::vector<std::vector<NodeLabel>> map_model_;
 
+            std::vector<glm::vec2> monster_locations_;
+            
         private:
             
             glm::vec2 top_left_corner_;

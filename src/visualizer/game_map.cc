@@ -43,6 +43,42 @@ namespace visualizer_app {
             FindNextDirection(pixel_side_length);
             
         }
+        //Method check using for loops row[i] < row[j] same for column
+        //for every mike given location update mikes location to next location given what it currently is
+        //Comparing x and y coords and put mike 
+        
+        void GameMap::MoveMonsters() {
+            for (size_t i = 0; i < dimension_; i++) {
+                for (size_t j = 0; j < dimension_; j++) {
+                    if (map_model_[i][j] == NodeLabel::MonsterNode) {
+                        monster_locations_.push_back(vec2(i,j));
+                    }
+                }
+            }
+            for (vec2 location: monster_locations_) {
+                if (location.x < current_location_x_ &&
+                    map_model_[(size_t)location.x + 1][(size_t)location.y] == NodeLabel::RegularNode) {
+                    map_model_[(size_t)location.x][(size_t)location.y] = NodeLabel::RegularNode;
+                    map_model_[(size_t)location.x + 1][(size_t)location.y] = NodeLabel::MonsterNode;
+                    location.x++;
+                } else if (location.x > current_location_x_ &&
+                    map_model_[(size_t)location.x - 1][(size_t)location.y] == NodeLabel::RegularNode) {
+                    map_model_[(size_t)location.x][(size_t)location.y] = NodeLabel::RegularNode;
+                    map_model_[(size_t)location.x - 1][(size_t)location.y] = NodeLabel::MonsterNode;
+                    location.x--;
+                } else if (location.y > current_location_y_ &&
+                    map_model_[(size_t)location.x][(size_t)location.y - 1] == NodeLabel::RegularNode) {
+                    map_model_[(size_t)location.x][(size_t)location.y] = NodeLabel::RegularNode;
+                    map_model_[(size_t)location.x][(size_t)location.y - 1] = NodeLabel::MonsterNode;
+                    location.y--;
+                } else if (location.y < current_location_x_ &&
+                    map_model_[(size_t)location.x][(size_t)location.y + 1] == NodeLabel::RegularNode) {
+                    map_model_[(size_t)location.x][(size_t)location.y] = NodeLabel::RegularNode;
+                    map_model_[(size_t)location.x][(size_t)location.y + 1] = NodeLabel::MonsterNode;
+                    location.y++;
+                }
+            }
+        }
         
         void GameMap::FindNextDirection(double pixel_side_length) const {
             vec2 pixel_top_left = top_left_corner_ + vec2(current_location_y_ * pixel_side_length,

@@ -76,6 +76,7 @@ namespace visualizer_app {
                 !game_map_.IsPixelAnObstacle(starting_location_.GetXCoord(), original_y_coord - 1)) {
                 starting_location_.SetYCoord(original_y_coord - 1);
                 game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), 1);
+                game_map_.MoveMonsters();
             }
         }
         
@@ -86,6 +87,7 @@ namespace visualizer_app {
                 !game_map_.IsPixelAnObstacle(starting_location_.GetXCoord(), original_y_coord + 1)) {
                 starting_location_.SetYCoord(original_y_coord + 1);
                 game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), 2);
+                game_map_.MoveMonsters();
             }
         }
         
@@ -96,6 +98,7 @@ namespace visualizer_app {
                 !game_map_.IsPixelAnObstacle(original_x_coord - 1, starting_location_.GetYCoord())) {
                 starting_location_.SetXCoord(original_x_coord - 1);
                 game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), 3);
+                game_map_.MoveMonsters();
             }
         }
         
@@ -106,6 +109,7 @@ namespace visualizer_app {
                 !game_map_.IsPixelAnObstacle(original_x_coord + 1, starting_location_.GetYCoord())) {
                 starting_location_.SetXCoord(original_x_coord + 1);
                 game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), 4);
+                game_map_.MoveMonsters();
             }
 
         }
