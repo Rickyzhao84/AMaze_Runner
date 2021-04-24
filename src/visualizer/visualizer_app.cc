@@ -29,7 +29,7 @@ namespace visualizer_app {
             //Set starting_location_ same as the one in map_model_
             for (size_t i = 0; i < kDimension; i++) {
                 for (size_t j = 0; j < kDimension; j++) {
-                    if (game_map_.map_model_[i][j] == 1) {
+                    if (game_map_.map_model_[i][j] == NodeLabel::StartingNode) {
                         starting_location_.SetYCoord(i);
                         starting_location_.SetXCoord(j);
                     }

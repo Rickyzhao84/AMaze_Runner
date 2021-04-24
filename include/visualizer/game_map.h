@@ -9,10 +9,11 @@
 namespace visualizer_app {
 
     enum class NodeLabel {
-        StartingNode = 1,
-        EndingNode = 2,
-        ObstacleNode = 3,
-        MonsterNode = 4
+        StartingNode,
+        EndingNode,
+        ObstacleNode,
+        MonsterNode,
+        RegularNode
     };
 
         class GameMap {
@@ -38,7 +39,7 @@ namespace visualizer_app {
              * @param row x coord
              * @param column y coord
              */
-            void DrawNodes(size_t row, size_t column) const;
+            NodeLabel DrawNodes(size_t row, size_t column) const;
             
             /**
              * Draw an image on to the screen based on the coordinates given and filepath
@@ -114,7 +115,7 @@ namespace visualizer_app {
 
             size_t GetCurrentLocationY() const;
 
-            std::vector<std::vector<size_t>> map_model_;
+            std::vector<std::vector<NodeLabel>> map_model_;
 
         private:
             

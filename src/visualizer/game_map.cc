@@ -11,7 +11,7 @@ namespace visualizer_app {
                 : starting_node_(cinder::Color()), ending_node_(cinder::Color()) {
             top_left_corner_ = top_left_corner;
             dimension_ = dimension;
-            map_model_ = vector<vector<size_t>>(dimension_, vector<size_t>(dimension_, 0));
+            map_model_ = vector<vector<NodeLabel>>(dimension_, vector<NodeLabel>(dimension_, NodeLabel::RegularNode));
             map_size_ = map_size;
         }
 
@@ -53,21 +53,25 @@ namespace visualizer_app {
             
         }
         
-        void GameMap::DrawNodes(size_t row, size_t column) const {
+        NodeLabel GameMap::DrawNodes(size_t row, size_t column) const {
             //If the node at the pixel is starting node or a walked node
-            if (map_model_[row][column] == 1) {
+            if (map_model_[row][column] == NodeLabel::StartingNode) {
                 ci::gl::color(starting_node_.GetNodeColor());
-
-            } else if (map_model_[row][column] == 2) {
+                return NodeLabel::StartingNode;
+            } else if (map_model_[row][column] == NodeLabel::EndingNode) {
                 //If the node at the pixel is ending node
                 ci::gl::color(ending_node_.GetNodeColor());
-            } else if (map_model_[row][column] == 3) {
+                return NodeLabel::EndingNode;
+            } else if (map_model_[row][column] == NodeLabel::ObstacleNode) {
                 //If the node at the pixel is an obstacle node
                 ci::gl::color(kObstacleColor);
-            } else if (map_model_[row][column] == 4) {
+                return NodeLabel::ObstacleNode;
+            } else if (map_model_[row][column] == NodeLabel::MonsterNode) {
                 ci::gl::color(kMonsterNodeColor);
+                return NodeLabel::MonsterNode;
             } else {
                 ci::gl::color(ci::Color("black"));
+                return NodeLabel::RegularNode;
             }
         }
         
@@ -86,26 +90,26 @@ namespace visualizer_app {
             size_t random_point_x_coord = rand() % (dimension_);
             size_t random_point_y_coord = rand() % (dimension_);
             //starting_node represented by 1
-            map_model_[random_point_x_coord][random_point_y_coord] = 1;
+            map_model_[random_point_x_coord][random_point_y_coord] = NodeLabel::StartingNode;
             current_location_x_ = random_point_x_coord;
             current_location_y_ = random_point_y_coord;
             
             random_point_x_coord = rand() % (dimension_);
             random_point_y_coord = rand() % (dimension_);
-            if (map_model_[random_point_x_coord][random_point_y_coord] != 1) {
+            if (map_model_[random_point_x_coord][random_point_y_coord] != NodeLabel::StartingNode) {
                 //ending_node represented by 2
-                map_model_[random_point_x_coord][random_point_y_coord] = 2;
+                map_model_[random_point_x_coord][random_point_y_coord] = NodeLabel::EndingNode;
             }
             
             while (!obstacle_nodes_.empty()) {
                 size_t random_point_x_coord = rand() % (dimension_);
                 size_t random_point_y_coord = rand() % (dimension_);
                 
-                if (map_model_[random_point_x_coord][random_point_y_coord] != 1 &&
-                    map_model_[random_point_x_coord][random_point_y_coord] != 2) {
+                if (map_model_[random_point_x_coord][random_point_y_coord] != NodeLabel::StartingNode &&
+                    map_model_[random_point_x_coord][random_point_y_coord] != NodeLabel::EndingNode) {
                     //obstacle_node represented by 3
                     obstacle_pixels_.push_back(vec2(random_point_x_coord, random_point_y_coord));
-                    map_model_[random_point_x_coord][random_point_y_coord] = 3;
+                    map_model_[random_point_x_coord][random_point_y_coord] = NodeLabel::ObstacleNode;
                     obstacle_nodes_.pop_back();
                 }
             }
@@ -114,12 +118,12 @@ namespace visualizer_app {
                 size_t random_point_x_coord = rand() % (dimension_);
                 size_t random_point_y_coord = rand() % (dimension_);
 
-                if (map_model_[random_point_x_coord][random_point_y_coord] != 1 &&
-                    map_model_[random_point_x_coord][random_point_y_coord] != 2 &&
-                    map_model_[random_point_x_coord][random_point_y_coord] != 3) {
+                if (map_model_[random_point_x_coord][random_point_y_coord] != NodeLabel::StartingNode &&
+                    map_model_[random_point_x_coord][random_point_y_coord] != NodeLabel::EndingNode &&
+                    map_model_[random_point_x_coord][random_point_y_coord] != NodeLabel::ObstacleNode) {
                     
                     monster_pixels_.push_back(vec2(random_point_x_coord, random_point_y_coord));
-                    map_model_[random_point_x_coord][random_point_y_coord] = 4;
+                    map_model_[random_point_x_coord][random_point_y_coord] = NodeLabel::MonsterNode;
                     monster_nodes_.pop_back();
                 }
             }
@@ -158,7 +162,7 @@ namespace visualizer_app {
 
         void GameMap::UpdateMapPixelColor(size_t row, size_t column, size_t next_image) {
             //Change the pixel to a walked pixel
-            map_model_[row][column] = 1;
+            map_model_[row][column] = NodeLabel::StartingNode;
             current_location_y_ = column;
             current_location_x_ = row;
             determine_next_image = next_image;
