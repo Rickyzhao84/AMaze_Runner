@@ -48,6 +48,7 @@ namespace visualizer_app {
         //Comparing x and y coords and put mike 
         
         void GameMap::MoveMonsters() {
+            monster_locations_.clear();
             for (size_t i = 0; i < dimension_; i++) {
                 for (size_t j = 0; j < dimension_; j++) {
                     if (map_model_[i][j] == NodeLabel::MonsterNode) {
@@ -55,27 +56,31 @@ namespace visualizer_app {
                     }
                 }
             }
-            for (vec2 location: monster_locations_) {
-                if (location.x < current_location_x_ &&
-                    map_model_[(size_t)location.x + 1][(size_t)location.y] == NodeLabel::RegularNode) {
-                    map_model_[(size_t)location.x][(size_t)location.y] = NodeLabel::RegularNode;
-                    map_model_[(size_t)location.x + 1][(size_t)location.y] = NodeLabel::MonsterNode;
-                    location.x++;
-                } else if (location.x > current_location_x_ &&
-                    map_model_[(size_t)location.x - 1][(size_t)location.y] == NodeLabel::RegularNode) {
-                    map_model_[(size_t)location.x][(size_t)location.y] = NodeLabel::RegularNode;
-                    map_model_[(size_t)location.x - 1][(size_t)location.y] = NodeLabel::MonsterNode;
-                    location.x--;
-                } else if (location.y > current_location_y_ &&
-                    map_model_[(size_t)location.x][(size_t)location.y - 1] == NodeLabel::RegularNode) {
-                    map_model_[(size_t)location.x][(size_t)location.y] = NodeLabel::RegularNode;
-                    map_model_[(size_t)location.x][(size_t)location.y - 1] = NodeLabel::MonsterNode;
-                    location.y--;
-                } else if (location.y < current_location_x_ &&
-                    map_model_[(size_t)location.x][(size_t)location.y + 1] == NodeLabel::RegularNode) {
-                    map_model_[(size_t)location.x][(size_t)location.y] = NodeLabel::RegularNode;
-                    map_model_[(size_t)location.x][(size_t)location.y + 1] = NodeLabel::MonsterNode;
-                    location.y++;
+            for (size_t i = 0; i < monster_locations_.size(); i++) {
+                if (monster_locations_[i].x < current_location_x_ &&
+                    map_model_[(size_t)monster_locations_[i].x + 1][(size_t)monster_locations_[i].y] == NodeLabel::RegularNode) {
+                    
+                    map_model_[(size_t)monster_locations_[i].x][(size_t)monster_locations_[i].y] = NodeLabel::RegularNode;
+                    map_model_[(size_t)monster_locations_[i].x + 1][(size_t)monster_locations_[i].y] = NodeLabel::MonsterNode;
+                    
+                } else if (monster_locations_[i].x > current_location_x_ &&
+                    map_model_[(size_t)monster_locations_[i].x - 1][(size_t)monster_locations_[i].y] == NodeLabel::RegularNode) {
+                    
+                    map_model_[(size_t)monster_locations_[i].x][(size_t)monster_locations_[i].y] = NodeLabel::RegularNode;
+                    map_model_[(size_t)monster_locations_[i].x - 1][(size_t)monster_locations_[i].y] = NodeLabel::MonsterNode;
+                    
+                } else if (monster_locations_[i].y > current_location_y_ &&
+                    map_model_[(size_t)monster_locations_[i].x][(size_t)monster_locations_[i].y - 1] == NodeLabel::RegularNode) {
+                    
+                    map_model_[(size_t)monster_locations_[i].x][(size_t)monster_locations_[i].y] = NodeLabel::RegularNode;
+                    map_model_[(size_t)monster_locations_[i].x][(size_t)monster_locations_[i].y - 1] = NodeLabel::MonsterNode;
+                    
+                } else if (monster_locations_[i].y < current_location_y_ &&
+                    map_model_[(size_t)monster_locations_[i].x][(size_t)monster_locations_[i].y + 1] == NodeLabel::RegularNode) {
+                    
+                    map_model_[(size_t)monster_locations_[i].x][(size_t)monster_locations_[i].y] = NodeLabel::RegularNode;
+                    map_model_[(size_t)monster_locations_[i].x][(size_t)monster_locations_[i].y + 1] = NodeLabel::MonsterNode;
+                    
                 }
             }
         }

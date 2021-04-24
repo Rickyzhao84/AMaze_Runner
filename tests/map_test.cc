@@ -16,7 +16,7 @@ TEST_CASE("Map generates same amount of nodes as required") {
         size_t count = 0;
         for (size_t row = 0; row < 25; row++) {
             for (size_t column = 0; column < 25; column++) {
-                if (map_one.map_model_[row][column] == 3) {
+                if (map_one.map_model_[row][column] == visualizer_app::NodeLabel::ObstacleNode) {
                     count++;
                 }
             }
@@ -27,7 +27,7 @@ TEST_CASE("Map generates same amount of nodes as required") {
         size_t count = 0;
         for (size_t row = 0; row < 25; row++) {
             for (size_t column = 0; column < 25; column++) {
-                if (map_one.map_model_[row][column] == 1) {
+                if (map_one.map_model_[row][column] == visualizer_app::NodeLabel::StartingNode) {
                     count++;
                 }
             }
@@ -38,7 +38,7 @@ TEST_CASE("Map generates same amount of nodes as required") {
         size_t count = 0;
         for (size_t row = 0; row < 25; row++) {
             for (size_t column = 0; column < 25; column++) {
-                if (map_one.map_model_[row][column] == 2) {
+                if (map_one.map_model_[row][column] == visualizer_app::NodeLabel::EndingNode) {
                     count++;
                 }
             }
