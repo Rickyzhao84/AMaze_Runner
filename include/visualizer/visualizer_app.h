@@ -29,6 +29,14 @@ namespace visualizer_app {
              * @param event 
              */
             void keyDown(ci::app::KeyEvent event) override;
+            
+            void ChangeKeyUp();
+            
+            void ChangeKeyDown();
+            
+            void ChangeKeyLeft();
+            
+            void ChangeKeyRight();
 
             const size_t kDimension = 25;
             const double kTopLeftCornerCoordinate = 50;
