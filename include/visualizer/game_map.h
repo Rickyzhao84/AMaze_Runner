@@ -101,6 +101,8 @@ namespace visualizer_app {
             
             const ci::Color kMonsterNodeColor = "white";
             
+            const ci::Color KRegularNodeColor = "black";
+            
             std::string kMonsterImage = "../../../monster.jpg";
             
             std::string kLookDownImage = "../../../looking_down.jpg";

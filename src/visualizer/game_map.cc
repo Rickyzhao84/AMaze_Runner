@@ -73,6 +73,7 @@ namespace visualizer_app {
                 ci::gl::color(kObstacleColor);
                 return NodeLabel::ObstacleNode;
             } else if (map_model_[row][column] == NodeLabel::MonsterNode) {
+                ci::gl::color(ci::Color("black"));
                 return NodeLabel::MonsterNode;
             } else {
                 ci::gl::color(ci::Color("black"));
@@ -146,7 +147,7 @@ namespace visualizer_app {
             }
             
             for (size_t i = 0; i < kNumOfMonsterNodes; i++) {
-                MonsterNode new_monster(kMonsterNodeColor);
+                MonsterNode new_monster(KRegularNodeColor);
                 monster_nodes_.push_back(new_monster);
             }
         }
