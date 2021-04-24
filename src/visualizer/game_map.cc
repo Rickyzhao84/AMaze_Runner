@@ -27,13 +27,16 @@ namespace visualizer_app {
                     //Draw the big grid which is the size of the square
                     ci::Rectf grid(pixel_top_left, bottom_right_corner);
                     
-                    DrawNodes(row, column);
+                    NodeLabel label = DrawNodes(row, column);
                     
                     //Draw the small pixel grid
                     ci::gl::drawSolidRect(grid);
                     ci::gl::color(ci::Color("white"));
                     
                     ci::gl::drawStrokedRect(grid);
+                    if (label == NodeLabel::MonsterNode) {
+                        DrawImage(pixel_top_left, bottom_right_corner, kMonsterImage);
+                    }
                 }
             }
             
@@ -67,7 +70,6 @@ namespace visualizer_app {
                 ci::gl::color(kObstacleColor);
                 return NodeLabel::ObstacleNode;
             } else if (map_model_[row][column] == NodeLabel::MonsterNode) {
-                ci::gl::color(kMonsterNodeColor);
                 return NodeLabel::MonsterNode;
             } else {
                 ci::gl::color(ci::Color("black"));
