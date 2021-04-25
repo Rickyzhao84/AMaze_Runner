@@ -65,25 +65,25 @@ namespace visualizer_app {
                     
                     map_model_[(size_t)monster_locations_[i].x][(size_t)monster_locations_[i].y] = NodeLabel::RegularNode;
                     map_model_[(size_t)monster_locations_[i].x + 1][(size_t)monster_locations_[i].y] = NodeLabel::MonsterNode;
-                    
+                    monster_locations_[i].x++;
                 } else if (monster_locations_[i].x > current_location_x_ &&
                     map_model_[(size_t)monster_locations_[i].x - 1][(size_t)monster_locations_[i].y] == NodeLabel::RegularNode) {
                     
                     map_model_[(size_t)monster_locations_[i].x][(size_t)monster_locations_[i].y] = NodeLabel::RegularNode;
                     map_model_[(size_t)monster_locations_[i].x - 1][(size_t)monster_locations_[i].y] = NodeLabel::MonsterNode;
-                    
+                    monster_locations_[i].x--;
                 } else if (monster_locations_[i].y > current_location_y_ &&
                     map_model_[(size_t)monster_locations_[i].x][(size_t)monster_locations_[i].y - 1] == NodeLabel::RegularNode) {
                     
                     map_model_[(size_t)monster_locations_[i].x][(size_t)monster_locations_[i].y] = NodeLabel::RegularNode;
                     map_model_[(size_t)monster_locations_[i].x][(size_t)monster_locations_[i].y - 1] = NodeLabel::MonsterNode;
-                    
+                    monster_locations_[i].y--;
                 } else if (monster_locations_[i].y < current_location_y_ &&
                     map_model_[(size_t)monster_locations_[i].x][(size_t)monster_locations_[i].y + 1] == NodeLabel::RegularNode) {
                     
                     map_model_[(size_t)monster_locations_[i].x][(size_t)monster_locations_[i].y] = NodeLabel::RegularNode;
                     map_model_[(size_t)monster_locations_[i].x][(size_t)monster_locations_[i].y + 1] = NodeLabel::MonsterNode;
-                    
+                    monster_locations_[i].y++;
                 }
             }
         }
@@ -204,6 +204,11 @@ namespace visualizer_app {
             //Check if the x and y matches the obstacle pixels
             for (size_t i = 0; i < obstacle_pixels_.size(); i++) {
                 if (obstacle_pixels_[i].y == row && obstacle_pixels_[i].x == column) {
+                    return true;
+                }
+            }
+            for (size_t i = 0; i < monster_locations_.size(); i++) {
+                if (monster_locations_[i].y == row && monster_locations_[i].x == column) {
                     return true;
                 }
             }
