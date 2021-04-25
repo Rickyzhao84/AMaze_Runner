@@ -14,6 +14,8 @@ namespace visualizer_app {
             map_model_ = vector<vector<NodeLabel>>(dimension_, vector<NodeLabel>(dimension_, NodeLabel::RegularNode));
             map_size_ = map_size;
         }
+        
+        GameMap::GameMap() : starting_node_(cinder::Color()), ending_node_(cinder::Color()) {}
 
         void GameMap::Draw() const {
             double pixel_side_length = map_size_ / dimension_;
@@ -56,6 +58,7 @@ namespace visualizer_app {
                     }
                 }
             }
+            
             for (size_t i = 0; i < monster_locations_.size(); i++) {
                 if (monster_locations_[i].x < current_location_x_ &&
                     map_model_[(size_t)monster_locations_[i].x + 1][(size_t)monster_locations_[i].y] == NodeLabel::RegularNode) {

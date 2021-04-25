@@ -40,6 +40,11 @@ namespace visualizer_app {
         void VisualizerApp::draw() {
             ci::Color8u color("turquoise");
             ci::gl::clear(color);
+
+            if (game_map_.map_model_[game_map_.current_location_x_][game_map_.current_location_y_] == NodeLabel::EndingNode) {
+                end_game_screen_.Draw();
+                return;
+            }
             game_map_.Draw();
             
         }

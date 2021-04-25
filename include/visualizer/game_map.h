@@ -28,6 +28,8 @@ namespace visualizer_app {
              */
             GameMap(const glm::vec2 &top_left_corner, size_t dimension,
                     double map_size);
+            
+            GameMap();
 
             /**
              * Draw obstacles and their colors on the map
@@ -124,6 +126,9 @@ namespace visualizer_app {
             std::vector<std::vector<NodeLabel>> map_model_;
 
             std::vector<glm::vec2> monster_locations_;
+
+            size_t current_location_x_;
+            size_t current_location_y_;
             
         private:
             
@@ -134,8 +139,6 @@ namespace visualizer_app {
             std::vector<MonsterNode> monster_nodes_;
             StartingNode starting_node_;
             EndingNode ending_node_;
-            size_t current_location_x_;
-            size_t current_location_y_;
             std::vector<glm::vec2> obstacle_pixels_;
             std::vector<glm::vec2> monster_pixels_;
         };

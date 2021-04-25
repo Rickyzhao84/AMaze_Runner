@@ -4,6 +4,7 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "game_map.h"
+#include "end_game_screen.h"
 #include <core/Location.h>
 #include <core/player.h>
 
@@ -46,6 +47,7 @@ namespace visualizer_app {
         private:
             GameMap game_map_;
             Player player_;
+            EndGame end_game_screen_;
         };
 
 
