@@ -15,6 +15,13 @@ namespace visualizer_app {
         MonsterNode,
         RegularNode
     };
+    
+    enum class NextImage {
+        LookUp,
+        LookDown,
+        LookLeft,
+        LookRight
+    };
 
         class GameMap {
 
@@ -70,7 +77,7 @@ namespace visualizer_app {
              * @param row x coord
              * @param column y coord
              */
-            void UpdateMapPixelColor(size_t row, size_t column, size_t next_image);
+            void UpdateMapPixelColor(size_t row, size_t column, NextImage next_image);
 
             /**
              * Create animation (yet to be implemented)
@@ -117,7 +124,7 @@ namespace visualizer_app {
             
             std::string kLookRightImage = "../../../looking_right.jpg";
             
-            size_t determine_next_image = 1;
+            NextImage determine_next_image = NextImage::LookUp;
 
             size_t GetCurrentLocationX() const;
 

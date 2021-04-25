@@ -92,13 +92,13 @@ namespace visualizer_app {
             vec2 pixel_top_left = top_left_corner_ + vec2(current_location_y_ * pixel_side_length,
                                                           current_location_x_ * pixel_side_length);
             vec2 bottom_right = pixel_top_left + vec2(pixel_side_length, pixel_side_length);
-            if (determine_next_image == 1) {
+            if (determine_next_image == NextImage::LookUp) {
                 DrawImage(pixel_top_left, bottom_right, kLookUpImage);
-            } else if (determine_next_image == 2) {
+            } else if (determine_next_image == NextImage::LookDown) {
                 DrawImage(pixel_top_left, bottom_right, kLookDownImage);
-            } else if (determine_next_image == 3) {
+            } else if (determine_next_image == NextImage::LookLeft) {
                 DrawImage(pixel_top_left, bottom_right, kLookLeftImage);
-            } else if (determine_next_image == 4) {
+            } else if (determine_next_image == NextImage::LookRight) {
                 DrawImage(pixel_top_left, bottom_right, kLookRightImage);
             }
         }
@@ -215,7 +215,7 @@ namespace visualizer_app {
             return false;
         }
 
-        void GameMap::UpdateMapPixelColor(size_t row, size_t column, size_t next_image) {
+        void GameMap::UpdateMapPixelColor(size_t row, size_t column, NextImage next_image) {
             //Change the pixel to a walked pixel
             if (map_model_[row][column] != NodeLabel::EndingNode) {
                 map_model_[row][column] = NodeLabel::StartingNode;

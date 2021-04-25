@@ -7,6 +7,7 @@
 #include "cinder/ImageIo.h"
 #include "cinder/gl/Texture.h"
 #include <visualizer/visualizer_app.h>
+#include <visualizer/game_map.h>
 #include <core/Location.h>
 #include "cinder/app/AppBase.h"
 
@@ -80,7 +81,7 @@ namespace visualizer_app {
             if (original_y_coord != 0 &&
                 !game_map_.IsPixelAnObstacle(starting_location_.GetXCoord(), original_y_coord - 1)) {
                 starting_location_.SetYCoord(original_y_coord - 1);
-                game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), 1);
+                game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), NextImage::LookUp);
                 game_map_.MoveMonsters();
             }
         }
@@ -91,7 +92,7 @@ namespace visualizer_app {
             if (original_y_coord != kDimension - 1 &&
                 !game_map_.IsPixelAnObstacle(starting_location_.GetXCoord(), original_y_coord + 1)) {
                 starting_location_.SetYCoord(original_y_coord + 1);
-                game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), 2);
+                game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), NextImage::LookDown);
                 game_map_.MoveMonsters();
             }
         }
@@ -102,7 +103,7 @@ namespace visualizer_app {
             if (original_x_coord != 0 &&
                 !game_map_.IsPixelAnObstacle(original_x_coord - 1, starting_location_.GetYCoord())) {
                 starting_location_.SetXCoord(original_x_coord - 1);
-                game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), 3);
+                game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), NextImage::LookLeft);
                 game_map_.MoveMonsters();
             }
         }
@@ -113,7 +114,7 @@ namespace visualizer_app {
             if (original_x_coord != kDimension - 1 &&
                 !game_map_.IsPixelAnObstacle(original_x_coord + 1, starting_location_.GetYCoord())) {
                 starting_location_.SetXCoord(original_x_coord + 1);
-                game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), 4);
+                game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), NextImage::LookRight);
                 game_map_.MoveMonsters();
             }
 
