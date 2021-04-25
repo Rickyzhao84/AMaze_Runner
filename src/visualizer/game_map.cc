@@ -212,7 +212,9 @@ namespace visualizer_app {
 
         void GameMap::UpdateMapPixelColor(size_t row, size_t column, size_t next_image) {
             //Change the pixel to a walked pixel
-            map_model_[row][column] = NodeLabel::StartingNode;
+            if (map_model_[row][column] != NodeLabel::EndingNode) {
+                map_model_[row][column] = NodeLabel::StartingNode;
+            }
             current_location_y_ = column;
             current_location_x_ = row;
             determine_next_image = next_image;
