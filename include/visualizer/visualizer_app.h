@@ -20,6 +20,9 @@ namespace visualizer_app {
              */
             VisualizerApp();
 
+            VisualizerApp(GameMap game_map);
+            
+            
             /**
              * Draw the application and related items on the screen
              */

@@ -37,6 +37,22 @@ namespace visualizer_app {
                 }
             }
         }
+        
+        VisualizerApp::VisualizerApp(GameMap game_map)
+                : game_map_(glm::vec2(kTopLeftCornerCoordinate, kTopLeftCornerCoordinate),
+                            kDimension, kWindowSize) {
+            game_map_.CreateNodes();
+            game_map_.CreateMapModel();
+            //Set starting_location_ same as the one in map_model_
+            for (size_t i = 0; i < kDimension; i++) {
+                for (size_t j = 0; j < kDimension; j++) {
+                    if (game_map_.map_model_[i][j] == NodeLabel::StartingNode) {
+                        starting_location_.SetYCoord(i);
+                        starting_location_.SetXCoord(j);
+                    }
+                }
+            }
+        }
 
         void VisualizerApp::draw() {
             ci::Color8u color("turquoise");
