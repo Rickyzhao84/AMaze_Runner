@@ -4,8 +4,8 @@
 #include <cinder/Cinder.h>
 
 namespace visualizer_app {
-    
-    Player::Player() : location(0, 0){
+
+    Player::Player() : location(0, 0) {
     }
 
     void Player::MoveLeft(GameMap &game_map) {
@@ -27,7 +27,7 @@ namespace visualizer_app {
             game_map.UpdateMapPixelColor(location.GetYCoord(), location.GetXCoord(), NextImage::LookRight);
             game_map.MoveMonsters();
         }
-        
+
     }
 
     void Player::MoveDown(size_t dimension, GameMap &game_map) {
@@ -51,5 +51,5 @@ namespace visualizer_app {
         }
 
     }
-    
+
 }

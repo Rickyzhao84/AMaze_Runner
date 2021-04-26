@@ -8,7 +8,8 @@ namespace visualizer_app {
     }
     
     Location::Location() {
-        
+        x_coord_ = 0;
+        y_coord_ = 0;
     }
 
     const size_t Location::GetYCoord() const {

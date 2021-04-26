@@ -13,83 +13,84 @@
 
 namespace visualizer_app {
 
-        
-        using ci::gl::TextureRef;
-        using ci::Surface;
-        using ci::gl::Texture;
-        using std::vector;
-        using glm::vec2;
-        
 
-        VisualizerApp::VisualizerApp()
-                : game_map_(glm::vec2(kTopLeftCornerCoordinate, kTopLeftCornerCoordinate),
-                            kDimension, kWindowSize) {
-            ci::app::setWindowSize((int) kWindowSize + 250, (int) kWindowSize);
-            game_map_.CreateNodes();
-            game_map_.CreateMapModel();
-            //Set starting_location_ same as the one in map_model_
-            for (size_t i = 0; i < kDimension; i++) {
-                for (size_t j = 0; j < kDimension; j++) {
-                    if (game_map_.map_model_[i][j] == NodeLabel::StartingNode) {
-                        player_.location.SetXCoord(j);
-                        player_.location.SetYCoord(i);
-                        starting_location_.SetYCoord(i);
-                        starting_location_.SetXCoord(j);
-                    }
+    using ci::gl::TextureRef;
+    using ci::Surface;
+    using ci::gl::Texture;
+    using std::vector;
+    using glm::vec2;
+
+
+    VisualizerApp::VisualizerApp()
+            : game_map_(glm::vec2(kTopLeftCornerCoordinate, kTopLeftCornerCoordinate),
+                        kDimension, kWindowSize) {
+        ci::app::setWindowSize((int) kWindowSize + 250, (int) kWindowSize);
+        game_map_.CreateNodes();
+        game_map_.CreateMapModel();
+        //Set starting_location_ same as the one in map_model_
+        for (size_t i = 0; i < kDimension; i++) {
+            for (size_t j = 0; j < kDimension; j++) {
+                if (game_map_.map_model_[i][j] == NodeLabel::StartingNode) {
+                    player_.location.SetXCoord(j);
+                    player_.location.SetYCoord(i);
+                    starting_location_.SetYCoord(i);
+                    starting_location_.SetXCoord(j);
                 }
             }
         }
-        
-        VisualizerApp::VisualizerApp(GameMap game_map)
-                : game_map_(glm::vec2(kTopLeftCornerCoordinate, kTopLeftCornerCoordinate),
-                            kDimension, kWindowSize) {
-            game_map_.CreateNodes();
-            game_map_.CreateMapModel();
-            //Set starting_location_ same as the one in map_model_
-            for (size_t i = 0; i < kDimension; i++) {
-                for (size_t j = 0; j < kDimension; j++) {
-                    if (game_map_.map_model_[i][j] == NodeLabel::StartingNode) {
-                        starting_location_.SetYCoord(i);
-                        starting_location_.SetXCoord(j);
-                    }
+    }
+
+    VisualizerApp::VisualizerApp(GameMap game_map)
+            : game_map_(glm::vec2(kTopLeftCornerCoordinate, kTopLeftCornerCoordinate),
+                        kDimension, kWindowSize) {
+        game_map_.CreateNodes();
+        game_map_.CreateMapModel();
+        //Set starting_location_ same as the one in map_model_
+        for (size_t i = 0; i < kDimension; i++) {
+            for (size_t j = 0; j < kDimension; j++) {
+                if (game_map_.map_model_[i][j] == NodeLabel::StartingNode) {
+                    starting_location_.SetYCoord(i);
+                    starting_location_.SetXCoord(j);
                 }
             }
         }
+    }
 
-        void VisualizerApp::draw() {
-            ci::Color8u color("turquoise");
-            ci::gl::clear(color);
+    void VisualizerApp::draw() {
+        ci::Color8u color("turquoise");
+        ci::gl::clear(color);
 
-            if (game_map_.map_model_[game_map_.current_location_x_][game_map_.current_location_y_] == NodeLabel::EndingNode) {
-                end_game_screen_.Draw();
-                return;
-            }
-            game_map_.Draw();
-            
+        if (game_map_.map_model_[game_map_.current_location_x_][game_map_.current_location_y_] ==
+            NodeLabel::EndingNode) {
+            end_game_screen_.Draw();
+            return;
         }
+        game_map_.Draw();
 
-        void VisualizerApp::keyDown(ci::app::KeyEvent event) {
-            switch (event.getCode()) {
-                case ci::app::KeyEvent::KEY_LEFT: {
-                    player_.MoveLeft(game_map_);
-                    
-                    break;
-                }
-                case ci::app::KeyEvent::KEY_RIGHT: {
-                    player_.MoveRight(kDimension, game_map_);
-                    
-                    break;
-                }
-                case ci::app::KeyEvent::KEY_DOWN: {
-                    player_.MoveDown(kDimension, game_map_);
-                    
-                    break;
-                }
-                case ci::app::KeyEvent::KEY_UP: {
-                    player_.MoveUp(game_map_);
-                    
-                    break;
-                }
+    }
+
+    void VisualizerApp::keyDown(ci::app::KeyEvent event) {
+        switch (event.getCode()) {
+            case ci::app::KeyEvent::KEY_LEFT: {
+                player_.MoveLeft(game_map_);
+
+                break;
+            }
+            case ci::app::KeyEvent::KEY_RIGHT: {
+                player_.MoveRight(kDimension, game_map_);
+
+                break;
+            }
+            case ci::app::KeyEvent::KEY_DOWN: {
+                player_.MoveDown(kDimension, game_map_);
+
+                break;
+            }
+            case ci::app::KeyEvent::KEY_UP: {
+                player_.MoveUp(game_map_);
+
+                break;
             }
         }
+    }
 }
