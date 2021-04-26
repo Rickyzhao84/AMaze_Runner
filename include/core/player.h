@@ -12,29 +12,29 @@ namespace visualizer_app {
          * Move to the pixel left of current location
          * @param location_ 
          */
-        void MoveLeft(Location location_);
+        void MoveLeft();
         
         /**
          * Move to the pixel right of current location
          * @param dimension 
          * @param location_ 
          */
-        void MoveRight(size_t dimension, Location location_);
+        void MoveRight(size_t dimension);
         
         /**
          * Move to the pixel on top of current location
          * @param location_ 
          */
-        void MoveUp(Location location_);
+        void MoveUp();
         
         /**
          * Move to the pixel below current location
          * @param dimension 
          * @param location_ 
          */
-        void MoveDown(size_t dimension, Location location_);
+        void MoveDown(size_t dimension);
 
-        Location location_;
+        Location location;
         
     private:
         size_t dimension_;
