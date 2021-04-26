@@ -1,6 +1,7 @@
 #pragma once
 
 #include <core/location.h>
+#include <visualizer/game_map.h>
 
 namespace visualizer_app {
     class Player {
@@ -12,27 +13,27 @@ namespace visualizer_app {
          * Move to the pixel left of current location
          * @param location_ 
          */
-        void MoveLeft();
+        void MoveLeft(GameMap &game_map);
         
         /**
          * Move to the pixel right of current location
          * @param dimension 
          * @param location_ 
          */
-        void MoveRight(size_t dimension);
+        void MoveRight(size_t dimension, GameMap &game_map);
         
         /**
          * Move to the pixel on top of current location
          * @param location_ 
          */
-        void MoveUp();
+        void MoveUp(GameMap &game_map);
         
         /**
          * Move to the pixel below current location
          * @param dimension 
          * @param location_ 
          */
-        void MoveDown(size_t dimension);
+        void MoveDown(size_t dimension, GameMap &game_map);
 
         Location location;
         

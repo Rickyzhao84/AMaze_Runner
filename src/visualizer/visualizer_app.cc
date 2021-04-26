@@ -31,6 +31,8 @@ namespace visualizer_app {
             for (size_t i = 0; i < kDimension; i++) {
                 for (size_t j = 0; j < kDimension; j++) {
                     if (game_map_.map_model_[i][j] == NodeLabel::StartingNode) {
+                        player_.location.SetXCoord(j);
+                        player_.location.SetYCoord(i);
                         starting_location_.SetYCoord(i);
                         starting_location_.SetXCoord(j);
                     }
@@ -69,70 +71,25 @@ namespace visualizer_app {
         void VisualizerApp::keyDown(ci::app::KeyEvent event) {
             switch (event.getCode()) {
                 case ci::app::KeyEvent::KEY_LEFT: {
-                    ChangeKeyLeft();
+                    player_.MoveLeft(game_map_);
                     
                     break;
                 }
                 case ci::app::KeyEvent::KEY_RIGHT: {
-                    ChangeKeyRight();
+                    player_.MoveRight(kDimension, game_map_);
                     
                     break;
                 }
                 case ci::app::KeyEvent::KEY_DOWN: {
-                    ChangeKeyDown();
+                    player_.MoveDown(kDimension, game_map_);
                     
                     break;
                 }
                 case ci::app::KeyEvent::KEY_UP: {
-                    ChangeKeyUp();
+                    player_.MoveUp(game_map_);
                     
                     break;
                 }
             }
-        }
-        
-        void VisualizerApp::ChangeKeyUp() {
-            size_t original_y_coord = starting_location_.GetYCoord();
-            //Can't move when user is about to go out of bounds
-            if (original_y_coord != 0 &&
-                !game_map_.IsPixelAnObstacle(starting_location_.GetXCoord(), original_y_coord - 1)) {
-                starting_location_.SetYCoord(original_y_coord - 1);
-                game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), NextImage::LookUp);
-                game_map_.MoveMonsters();
-            }
-        }
-        
-        void VisualizerApp::ChangeKeyDown() {
-            size_t original_y_coord = starting_location_.GetYCoord();
-            //Can't move when user is about to go out of bounds
-            if (original_y_coord != kDimension - 1 &&
-                !game_map_.IsPixelAnObstacle(starting_location_.GetXCoord(), original_y_coord + 1)) {
-                starting_location_.SetYCoord(original_y_coord + 1);
-                game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), NextImage::LookDown);
-                game_map_.MoveMonsters();
-            }
-        }
-        
-        void VisualizerApp::ChangeKeyLeft() {
-            size_t original_x_coord = starting_location_.GetXCoord();
-            //Can't move when user is about to go out of bounds
-            if (original_x_coord != 0 &&
-                !game_map_.IsPixelAnObstacle(original_x_coord - 1, starting_location_.GetYCoord())) {
-                starting_location_.SetXCoord(original_x_coord - 1);
-                game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), NextImage::LookLeft);
-                game_map_.MoveMonsters();
-            }
-        }
-        
-        void VisualizerApp::ChangeKeyRight() {
-            size_t original_x_coord = starting_location_.GetXCoord();
-            //Can't move when user is about to go out of bounds
-            if (original_x_coord != kDimension - 1 &&
-                !game_map_.IsPixelAnObstacle(original_x_coord + 1, starting_location_.GetYCoord())) {
-                starting_location_.SetXCoord(original_x_coord + 1);
-                game_map_.UpdateMapPixelColor(starting_location_.GetYCoord(), starting_location_.GetXCoord(), NextImage::LookRight);
-                game_map_.MoveMonsters();
-            }
-
         }
 }
