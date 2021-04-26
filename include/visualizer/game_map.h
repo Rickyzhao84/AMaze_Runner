@@ -100,9 +100,9 @@ namespace visualizer_app {
 
             const static size_t kTotalColorNumbers = 256;
             
-            const static size_t kNumOfObstacleNodes = 20;
+            const static size_t kNumOfObstacleNodes = 25;
             
-            const static size_t kNumOfMonsterNodes = 3;
+            const static size_t kNumOfMonsterNodes = 5;
             
             const ci::Color kObstacleColor = "red";
             
