@@ -38,7 +38,5 @@ namespace visualizer_app {
         Location location;
         
     private:
-        size_t dimension_;
-        
     };
 }

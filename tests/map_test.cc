@@ -55,8 +55,8 @@ TEST_CASE("Map generates a different starting point each game") {
     map_one.CreateMapModel();
     map_two.CreateNodes();
     map_two.CreateMapModel();
-    vec2 starting_pixel_one = vec2(map_one.GetCurrentLocationX(),map_one.GetCurrentLocationY());
-    vec2 starting_pixel_two = vec2(map_two.GetCurrentLocationX(), map_two.GetCurrentLocationY());
+    vec2 starting_pixel_one = vec2(map_one.location_.GetXCoord(),map_one.location_.GetYCoord());
+    vec2 starting_pixel_two = vec2(map_two.location_.GetXCoord(), map_two.location_.GetYCoord());
     REQUIRE(starting_pixel_one != starting_pixel_two);
 }
 
@@ -101,15 +101,15 @@ TEST_CASE("Monster move closer to player") {
             };
     game_map.map_model_ = vector;
     SECTION("Monster moves right first") {
-        game_map.current_location_x_ = 2;
-        game_map.current_location_y_ = 2;
+        game_map.location_.SetXCoord(2);
+        game_map.location_.SetYCoord(2);
         REQUIRE(game_map.map_model_[1][0] == visualizer_app::NodeLabel::RegularNode);
         game_map.MoveMonsters();
         REQUIRE(game_map.map_model_[1][0] == visualizer_app::NodeLabel::MonsterNode);
     }
     SECTION("Monster moves down when player is below") {
-        game_map.current_location_x_ = 0;
-        game_map.current_location_y_ = 2;
+        game_map.location_.SetXCoord(0);
+        game_map.location_.SetYCoord(2);
         REQUIRE(game_map.map_model_[0][1] == visualizer_app::NodeLabel::RegularNode);
         game_map.MoveMonsters();
         REQUIRE(game_map.map_model_[0][1] == visualizer_app::NodeLabel::MonsterNode);
@@ -121,8 +121,8 @@ TEST_CASE("Monster move closer to player") {
                         {visualizer_app::NodeLabel::StartingNode, visualizer_app::NodeLabel::RegularNode, visualizer_app::NodeLabel::RegularNode},
                         {visualizer_app::NodeLabel::RegularNode, visualizer_app::NodeLabel::RegularNode, visualizer_app::NodeLabel::RegularNode}
                 };
-        game_map.current_location_x_ = 0;
-        game_map.current_location_y_ = 1;
+        game_map.location_.SetXCoord(0);
+        game_map.location_.SetYCoord(1);
         REQUIRE(game_map.map_model_[0][0] == visualizer_app::NodeLabel::MonsterNode);
         game_map.MoveMonsters();
         REQUIRE(game_map.map_model_[0][0] == visualizer_app::NodeLabel::MonsterNode);
@@ -134,8 +134,8 @@ TEST_CASE("Monster move closer to player") {
                         {visualizer_app::NodeLabel::ObstacleNode, visualizer_app::NodeLabel::RegularNode, visualizer_app::NodeLabel::RegularNode},
                         {visualizer_app::NodeLabel::RegularNode, visualizer_app::NodeLabel::RegularNode, visualizer_app::NodeLabel::StartingNode}
                 };
-        game_map.current_location_x_ = 1;
-        game_map.current_location_y_ = 2;
+        game_map.location_.SetXCoord(1);
+        game_map.location_.SetYCoord(2);
         REQUIRE(game_map.map_model_[0][1] == visualizer_app::NodeLabel::RegularNode);
         game_map.MoveMonsters();
         REQUIRE(game_map.map_model_[0][1] == visualizer_app::NodeLabel::MonsterNode);

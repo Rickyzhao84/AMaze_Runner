@@ -60,7 +60,7 @@ namespace visualizer_app {
         }
 
         for (size_t i = 0; i < monster_locations_.size(); i++) {
-            if (monster_locations_[i].x < current_location_x_ &&
+            if (monster_locations_[i].x < location_.GetXCoord() &&
                 map_model_[(size_t) monster_locations_[i].x + 1][(size_t) monster_locations_[i].y] ==
                 NodeLabel::RegularNode) {
 
@@ -68,7 +68,7 @@ namespace visualizer_app {
                 map_model_[(size_t) monster_locations_[i].x +
                            1][(size_t) monster_locations_[i].y] = NodeLabel::MonsterNode;
                 monster_locations_[i].x++;
-            } else if (monster_locations_[i].x > current_location_x_ &&
+            } else if (monster_locations_[i].x > location_.GetXCoord() &&
                        map_model_[(size_t) monster_locations_[i].x - 1][(size_t) monster_locations_[i].y] ==
                        NodeLabel::RegularNode) {
 
@@ -76,7 +76,7 @@ namespace visualizer_app {
                 map_model_[(size_t) monster_locations_[i].x -
                            1][(size_t) monster_locations_[i].y] = NodeLabel::MonsterNode;
                 monster_locations_[i].x--;
-            } else if (monster_locations_[i].y > current_location_y_ &&
+            } else if (monster_locations_[i].y > location_.GetYCoord() &&
                        map_model_[(size_t) monster_locations_[i].x][(size_t) monster_locations_[i].y - 1] ==
                        NodeLabel::RegularNode) {
 
@@ -84,7 +84,7 @@ namespace visualizer_app {
                 map_model_[(size_t) monster_locations_[i].x][(size_t) monster_locations_[i].y -
                                                              1] = NodeLabel::MonsterNode;
                 monster_locations_[i].y--;
-            } else if (monster_locations_[i].y < current_location_y_ &&
+            } else if (monster_locations_[i].y < location_.GetYCoord() &&
                        map_model_[(size_t) monster_locations_[i].x][(size_t) monster_locations_[i].y + 1] ==
                        NodeLabel::RegularNode) {
 
@@ -97,8 +97,8 @@ namespace visualizer_app {
     }
 
     void GameMap::FindNextDirection(double pixel_side_length) const {
-        vec2 pixel_top_left = top_left_corner_ + vec2(current_location_y_ * pixel_side_length,
-                                                      current_location_x_ * pixel_side_length);
+        vec2 pixel_top_left = top_left_corner_ + vec2(location_.GetYCoord() * pixel_side_length,
+                                                      location_.GetXCoord() * pixel_side_length);
         vec2 bottom_right = pixel_top_left + vec2(pixel_side_length, pixel_side_length);
         if (determine_next_image == NextImage::LookUp) {
             DrawImage(pixel_top_left, bottom_right, kLookUpImage);
@@ -149,8 +149,8 @@ namespace visualizer_app {
         size_t random_point_y_coord = rand() % (dimension_);
         //starting_node represented by 1
         map_model_[random_point_x_coord][random_point_y_coord] = NodeLabel::StartingNode;
-        current_location_x_ = random_point_x_coord;
-        current_location_y_ = random_point_y_coord;
+        location_.SetXCoord(random_point_x_coord);
+        location_.SetYCoord(random_point_y_coord);
 
         random_point_x_coord = rand() % (dimension_);
         random_point_y_coord = rand() % (dimension_);
@@ -228,21 +228,13 @@ namespace visualizer_app {
         if (map_model_[row][column] != NodeLabel::EndingNode) {
             map_model_[row][column] = NodeLabel::StartingNode;
         }
-        current_location_y_ = column;
-        current_location_x_ = row;
+        location_.SetYCoord(column);
+        location_.SetXCoord(row);
         determine_next_image = next_image;
     }
 
     size_t GameMap::GenerateColorNumber() {
         return rand() % kTotalColorNumbers;
-    }
-
-    size_t GameMap::GetCurrentLocationX() const {
-        return current_location_x_;
-    }
-
-    size_t GameMap::GetCurrentLocationY() const {
-        return current_location_y_;
     }
 
 }

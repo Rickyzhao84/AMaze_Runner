@@ -49,6 +49,8 @@ namespace visualizer_app {
         for (size_t i = 0; i < kDimension; i++) {
             for (size_t j = 0; j < kDimension; j++) {
                 if (game_map_.map_model_[i][j] == NodeLabel::StartingNode) {
+                    player_.location.SetXCoord(j);
+                    player_.location.SetYCoord(i);
                     starting_location_.SetYCoord(i);
                     starting_location_.SetXCoord(j);
                 }
@@ -60,7 +62,7 @@ namespace visualizer_app {
         ci::Color8u color("turquoise");
         ci::gl::clear(color);
 
-        if (game_map_.map_model_[game_map_.current_location_x_][game_map_.current_location_y_] ==
+        if (game_map_.map_model_[game_map_.location_.GetXCoord()][game_map_.location_.GetYCoord()] ==
             NodeLabel::EndingNode) {
             end_game_screen_.Draw();
             return;

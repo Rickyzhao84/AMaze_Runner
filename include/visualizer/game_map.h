@@ -4,7 +4,7 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "core/node.h"
-
+#include "core/location.h"
 
 namespace visualizer_app {
 
@@ -126,16 +126,12 @@ namespace visualizer_app {
             
             NextImage determine_next_image = NextImage::LookUp;
 
-            size_t GetCurrentLocationX() const;
-
-            size_t GetCurrentLocationY() const;
-
             std::vector<std::vector<NodeLabel>> map_model_;
 
             std::vector<glm::vec2> monster_locations_;
-
-            size_t current_location_x_;
-            size_t current_location_y_;
+            
+            Location location_;
+            
             
         private:
             
