@@ -14,7 +14,7 @@ namespace visualizer_app {
         Button();
 
         /**
-         * Draw the button
+         * Draw the button for restart
          */
         void Draw() const;
 
