@@ -18,6 +18,7 @@ namespace visualizer_app {
     }
 
     Button::Button() {
+        //Hardcoded for now, will be fixed later
         top_left_corner_ = vec2(1100, 10);
         bottom_right_corner_ = vec2(1150, 40);
     }
