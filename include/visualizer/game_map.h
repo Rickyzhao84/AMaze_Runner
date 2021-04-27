@@ -58,8 +58,15 @@ namespace visualizer_app {
              */
             void DrawImage(glm::vec2 top_left, glm::vec2 bottom_right, std::string path) const;
             
+            /**
+             * Move monsters every step when player is moved
+             */
             void MoveMonsters();
             
+            /**
+             * Find the next direction where player is heading and draw character image facing that direction
+             * @param pixel_side_length is side length of a pixel
+             */
             void FindNextDirection(double pixel_side_length) const;
             
             /**
@@ -73,11 +80,11 @@ namespace visualizer_app {
             void CreateMapModel();
             
             /**
-             * Set pixels the user has walked on to the color of starting node
+             * Set pixel color, new user location, and next character image
              * @param row x coord
              * @param column y coord
              */
-            void UpdateMapPixelColor(size_t row, size_t column, NextImage next_image);
+            void UpdateMapPixel(size_t row, size_t column, NextImage next_image);
 
             /**
              * Create animation (yet to be implemented)
@@ -85,7 +92,7 @@ namespace visualizer_app {
             void CreateAnimation();
 
             /**
-             * Check if the pixel user wants to move to is an obstacle node
+             * Check if the pixel user wants to move to is an obstacle node or monster node
              * @param row x coord
              * @param column y coord
              * @return true if it's an obstacle, false if it's not

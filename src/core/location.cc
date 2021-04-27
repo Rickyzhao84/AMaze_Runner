@@ -27,5 +27,4 @@ namespace visualizer_app {
     void Location::SetXCoord(const size_t &xCoord) {
         x_coord_ = xCoord;
     }
-
 }

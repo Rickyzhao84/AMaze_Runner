@@ -15,7 +15,7 @@ namespace visualizer_app {
          * @param node_color color of a 'walkable' node
          */
         Node(ci::Color node_color);
-        
+
         void SetNodeColor(const cinder::Color &nodeColor);
 
         const cinder::Color &GetNodeColor() const;
@@ -50,10 +50,10 @@ namespace visualizer_app {
          */
         ObstacleNode(ci::Color nodeColor);
     };
-    
+
     class MonsterNode : public Node {
     public:
-        
+
         MonsterNode(ci::Color nodeColor);
     };
 

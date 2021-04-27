@@ -19,9 +19,6 @@ namespace visualizer_app {
              * Constructor of the app
              */
             VisualizerApp();
-
-            VisualizerApp(GameMap game_map);
-            
             
             /**
              * Draw the application and related items on the screen
@@ -33,19 +30,10 @@ namespace visualizer_app {
              * @param event 
              */
             void keyDown(ci::app::KeyEvent event) override;
-            
-            void ChangeKeyUp();
-            
-            void ChangeKeyDown();
-            
-            void ChangeKeyLeft();
-            
-            void ChangeKeyRight();
 
             const size_t kDimension = 25;
             const double kTopLeftCornerCoordinate = 10;
             const double kWindowSize = 1000;
-            Location starting_location_;
 
         private:
             GameMap game_map_;

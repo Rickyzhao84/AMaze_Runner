@@ -42,15 +42,14 @@ namespace visualizer_app {
                 }
             }
         }
+        //Find the direction player is currently heading toward to draw next character image
         FindNextDirection(pixel_side_length);
 
     }
-    //Method check using for loops row[i] < row[j] same for column
-    //for every mike given location update mikes location to next location given what it currently is
-    //Comparing x and y coords and put mike 
 
     void GameMap::MoveMonsters() {
         monster_locations_.clear();
+        //Find new locations of monsters
         for (size_t i = 0; i < dimension_; i++) {
             for (size_t j = 0; j < dimension_; j++) {
                 if (map_model_[i][j] == NodeLabel::MonsterNode) {
@@ -58,8 +57,11 @@ namespace visualizer_app {
                 }
             }
         }
-
+        
         for (size_t i = 0; i < monster_locations_.size(); i++) {
+            //Compare monster locations with player location and move monster location closer to player
+            //Only move if the next node is a regular node because monsters are also blocked from obstacles
+            
             if (monster_locations_[i].x < location_.GetXCoord() &&
                 map_model_[(size_t) monster_locations_[i].x + 1][(size_t) monster_locations_[i].y] ==
                 NodeLabel::RegularNode) {
@@ -97,8 +99,10 @@ namespace visualizer_app {
     }
 
     void GameMap::FindNextDirection(double pixel_side_length) const {
+        //Find top left corner of pixel given the top left corner of map
         vec2 pixel_top_left = top_left_corner_ + vec2(location_.GetYCoord() * pixel_side_length,
                                                       location_.GetXCoord() * pixel_side_length);
+        
         vec2 bottom_right = pixel_top_left + vec2(pixel_side_length, pixel_side_length);
         if (determine_next_image == NextImage::LookUp) {
             DrawImage(pixel_top_left, bottom_right, kLookUpImage);
@@ -172,6 +176,7 @@ namespace visualizer_app {
             }
         }
 
+        //Set monster locations given the occupied locations
         while (!monster_nodes_.empty()) {
             size_t random_point_x_coord = rand() % (dimension_);
             size_t random_point_y_coord = rand() % (dimension_);
@@ -215,6 +220,7 @@ namespace visualizer_app {
                 return true;
             }
         }
+        //Check if the x and y matches the monsters pixels
         for (size_t i = 0; i < monster_locations_.size(); i++) {
             if (monster_locations_[i].y == row && monster_locations_[i].x == column) {
                 return true;
@@ -223,7 +229,7 @@ namespace visualizer_app {
         return false;
     }
 
-    void GameMap::UpdateMapPixelColor(size_t row, size_t column, NextImage next_image) {
+    void GameMap::UpdateMapPixel(size_t row, size_t column, NextImage next_image) {
         //Change the pixel to a walked pixel
         if (map_model_[row][column] != NodeLabel::EndingNode) {
             map_model_[row][column] = NodeLabel::StartingNode;
