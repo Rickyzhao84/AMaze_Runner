@@ -58,7 +58,8 @@ list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
         src/visualizer/visualizer_app.cc
         src/visualizer/end_game_screen.cc)
 
-list(APPEND TEST_FILES tests/map_test.cc)
+list(APPEND TEST_FILES tests/map_test.cc
+        tests/player_movement_test.cc)
 
 ci_make_app( 
         APP_NAME        visualizer-app

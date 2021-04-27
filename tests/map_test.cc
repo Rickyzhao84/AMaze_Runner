@@ -3,6 +3,7 @@
 #include "cinder/app/App.h"
 #include <visualizer/visualizer_app.h>
 #include <core/Location.h>
+#include <core/player.h>
 #include <visualizer/game_map.h>
 #include <visualizer/visualizer_app.h>
 
@@ -58,37 +59,6 @@ TEST_CASE("Map generates a different starting point each game") {
     vec2 starting_pixel_one = vec2(map_one.location_.GetXCoord(),map_one.location_.GetYCoord());
     vec2 starting_pixel_two = vec2(map_two.location_.GetXCoord(), map_two.location_.GetYCoord());
     REQUIRE(starting_pixel_one != starting_pixel_two);
-}
-
-TEST_CASE("Player can move using the arrow keys") {
-    SECTION("Move left") {
-        visualizer_app::GameMap game_map;
-        visualizer_app::VisualizerApp app(game_map);
-        app.starting_location_.SetXCoord(5);
-        app.ChangeKeyLeft();
-        REQUIRE(app.starting_location_.GetXCoord() == 4);
-    }
-    SECTION("Move up") {
-        visualizer_app::GameMap game_map;
-        visualizer_app::VisualizerApp app(game_map);
-        app.starting_location_.SetYCoord(5);
-        app.ChangeKeyUp();
-        REQUIRE(app.starting_location_.GetXCoord() == 6);
-    }
-    SECTION("Move down") {
-        visualizer_app::GameMap game_map;
-        visualizer_app::VisualizerApp app(game_map);
-        app.starting_location_.SetYCoord(5);
-        app.ChangeKeyDown();
-        REQUIRE(app.starting_location_.GetXCoord() == 4);
-    }
-    SECTION("Move right") {
-        visualizer_app::GameMap game_map;
-        visualizer_app::VisualizerApp app(game_map);
-        app.starting_location_.SetXCoord(5);
-        app.ChangeKeyRight();
-        REQUIRE(app.starting_location_.GetXCoord() == 6);
-    }
 }
 
 TEST_CASE("Monster move closer to player") {
