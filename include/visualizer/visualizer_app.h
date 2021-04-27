@@ -5,6 +5,7 @@
 #include "cinder/gl/gl.h"
 #include "game_map.h"
 #include "end_game_screen.h"
+#include "button.h"
 #include <core/Location.h>
 #include <core/player.h>
 
@@ -37,6 +38,7 @@ namespace visualizer_app {
 
         private:
             GameMap game_map_;
+            Button button_;
             Player player_;
             EndGame end_game_screen_;
         };

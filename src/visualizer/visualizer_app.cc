@@ -41,7 +41,7 @@ namespace visualizer_app {
     void VisualizerApp::draw() {
         ci::Color8u color("turquoise");
         ci::gl::clear(color);
-
+        button_.Draw();
         if (game_map_.map_model_[game_map_.location_.GetXCoord()][game_map_.location_.GetYCoord()] ==
             NodeLabel::EndingNode) {
             end_game_screen_.Draw();
