@@ -56,7 +56,8 @@ list(APPEND CORE_SOURCE_FILES src/core/player.cc
 list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
         src/visualizer/game_map.cc
         src/visualizer/visualizer_app.cc
-        src/visualizer/end_game_screen.cc)
+        src/visualizer/end_game_screen.cc
+        src/visualizer/button.cc)
 
 list(APPEND TEST_FILES tests/map_test.cc
         tests/player_movement_test.cc)

@@ -6,5 +6,4 @@ For the first week, I hope to have the application to the point where it can ran
   
 A likely criticism of this project proposal is that its complexity isn't high. Personally, I don't think that's true because for an escape game, there are always things that can be done to improve and make it more attractive to users. Furthermore, I can apply better algorithms that can make the monsters react better and smarter. If I finish the project early, I'll hope to add a feature where the user can use their mouse as well as the arrows on the keyboard. Although I probably won't make it past this point, I can maybe add more features to the game with grids that have different functions, such as mine grids or grids that do different animations. Implementing music and sound effects will also make the application more interesting.
   
-Although I'm still early into my research, an external library that I'll probably be using is 
-[matplot](https://github.com/lava/matplotlib-cpp). 
+For this project, I'll not be using any other libraries beside Cinder.

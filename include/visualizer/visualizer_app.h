@@ -31,7 +31,7 @@ namespace visualizer_app {
              */
             void keyDown(ci::app::KeyEvent event) override;
 
-            const size_t kDimension = 25;
+            const size_t kDimension = 35;
             const double kTopLeftCornerCoordinate = 10;
             const double kWindowSize = 1000;
 
