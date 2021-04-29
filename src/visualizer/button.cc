@@ -23,5 +23,8 @@ namespace visualizer_app {
         bottom_right_corner_ = vec2(1150, 40);
     }
 
+    void Button::SetTopLeftCorner(const vec2 &topLeftCorner) {
+        top_left_corner_ = topLeftCorner;
+    }
 
 }

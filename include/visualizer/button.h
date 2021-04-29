@@ -18,6 +18,8 @@ namespace visualizer_app {
          */
         void Draw() const;
 
+        void SetTopLeftCorner(const glm::vec2 &topLeftCorner);
+
     private:
 
         glm::vec2 top_left_corner_;

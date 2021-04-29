@@ -36,6 +36,7 @@ namespace visualizer_app {
                 }
             }
         }
+        
     }
 
     void VisualizerApp::draw() {
