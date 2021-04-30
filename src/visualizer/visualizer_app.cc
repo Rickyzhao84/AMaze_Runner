@@ -51,6 +51,10 @@ namespace visualizer_app {
         game_map_.Draw();
 
     }
+    
+    void VisualizerApp::Clear() {
+        game_map_.map_model_.clear();
+    }
 
     void VisualizerApp::keyDown(ci::app::KeyEvent event) {
         switch (event.getCode()) {
@@ -73,6 +77,26 @@ namespace visualizer_app {
                 player_.MoveUp(game_map_);
 
                 break;
+            }
+        }
+    }
+    
+    void VisualizerApp::mouseDown(ci::app::MouseEvent event) {
+        if (event.getX() > 1100 && event.getX() < 1150) {
+            if (event.getY() > 10 && event.getY() < 40) {
+                Clear();
+                game_map_.map_model_ = vector<vector<NodeLabel>>(kDimension, vector<NodeLabel>(kDimension, NodeLabel::RegularNode));
+                game_map_.CreateNodes();
+                game_map_.CreateMapModel();
+                //Set starting_location_ same as the one in map_model_
+                for (size_t i = 0; i < kDimension; i++) {
+                    for (size_t j = 0; j < kDimension; j++) {
+                        if (game_map_.map_model_[i][j] == NodeLabel::StartingNode) {
+                            player_.location.SetXCoord(j);
+                            player_.location.SetYCoord(i);
+                        }
+                    }
+                }
             }
         }
     }

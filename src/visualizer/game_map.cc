@@ -209,10 +209,6 @@ namespace visualizer_app {
         }
     }
 
-    void GameMap::CreateAnimation() {
-        //Yet to be implemented
-    }
-
     bool GameMap::IsPixelAnObstacle(size_t row, size_t column) {
         //Check if the x and y matches the obstacle pixels
         for (size_t i = 0; i < obstacle_pixels_.size(); i++) {

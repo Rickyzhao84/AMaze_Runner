@@ -87,11 +87,6 @@ namespace visualizer_app {
             void UpdateMapPixel(size_t row, size_t column, NextImage next_image);
 
             /**
-             * Create animation (yet to be implemented)
-             */
-            void CreateAnimation();
-
-            /**
              * Check if the pixel user wants to move to is an obstacle node or monster node
              * @param row x coord
              * @param column y coord

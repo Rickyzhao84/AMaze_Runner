@@ -27,10 +27,17 @@ namespace visualizer_app {
             void draw() override;
 
             /**
+             * 
+             */
+            void Clear();
+
+            /**
              * When user clicks down on a key
              * @param event 
              */
             void keyDown(ci::app::KeyEvent event) override;
+            
+            void mouseDown(ci::app::MouseEvent event);
 
             const size_t kDimension = 35;
             const double kTopLeftCornerCoordinate = 10;
