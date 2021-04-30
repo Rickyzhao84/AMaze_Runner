@@ -224,6 +224,13 @@ namespace visualizer_app {
         }
         return false;
     }
+    
+    void GameMap::Clear() {
+        monster_pixels_.clear();
+        obstacle_pixels_.clear();
+        monster_locations_.clear();
+        map_model_.clear();
+    }
 
     void GameMap::UpdateMapPixel(size_t row, size_t column, NextImage next_image) {
         //Change the pixel to a walked pixel

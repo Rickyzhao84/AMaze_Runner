@@ -2,6 +2,9 @@
 
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
+#include "cinder/audio/SamplePlayerNode.h"
+#include "cinder/audio/Source.h"
+#include "cinder/audio/Voice.h"
 #include "cinder/gl/gl.h"
 #include "cinder/Log.h"
 #include "cinder/ImageIo.h"
@@ -24,6 +27,7 @@ namespace visualizer_app {
     VisualizerApp::VisualizerApp()
             : game_map_(glm::vec2(kTopLeftCornerCoordinate, kTopLeftCornerCoordinate),
                         kDimension, kWindowSize) {
+        
         ci::app::setWindowSize((int) kWindowSize + 250, (int) kWindowSize);
         game_map_.CreateNodes();
         game_map_.CreateMapModel();
@@ -36,7 +40,13 @@ namespace visualizer_app {
                 }
             }
         }
-        
+
+//        //Audio code derived from
+//        //https://libcinder.org/docs/guides/audio/index.html
+//        ci::audio::SourceFileRef sourceFile = ci::audio::load(ci::app::loadAsset("jokes.wav"));
+//        ci::audio::VoiceRef mVoice;
+//        mVoice = ci::audio::Voice::create(sourceFile);
+//        mVoice->start();
     }
 
     void VisualizerApp::draw() {
@@ -50,10 +60,6 @@ namespace visualizer_app {
         }
         game_map_.Draw();
 
-    }
-    
-    void VisualizerApp::Clear() {
-        game_map_.map_model_.clear();
     }
 
     void VisualizerApp::keyDown(ci::app::KeyEvent event) {
@@ -84,7 +90,7 @@ namespace visualizer_app {
     void VisualizerApp::mouseDown(ci::app::MouseEvent event) {
         if (event.getX() > 1100 && event.getX() < 1150) {
             if (event.getY() > 10 && event.getY() < 40) {
-                Clear();
+                game_map_.Clear();
                 game_map_.map_model_ = vector<vector<NodeLabel>>(kDimension, vector<NodeLabel>(kDimension, NodeLabel::RegularNode));
                 game_map_.CreateNodes();
                 game_map_.CreateMapModel();

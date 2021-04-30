@@ -94,6 +94,8 @@ namespace visualizer_app {
              */
             bool IsPixelAnObstacle(size_t row, size_t column);
             
+            void Clear();
+            
             /**
              * Generate a random color that will be used to create animations
              * @return random size_t to create colors

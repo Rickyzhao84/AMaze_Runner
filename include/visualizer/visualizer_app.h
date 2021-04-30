@@ -27,11 +27,6 @@ namespace visualizer_app {
             void draw() override;
 
             /**
-             * 
-             */
-            void Clear();
-
-            /**
              * When user clicks down on a key
              * @param event 
              */
