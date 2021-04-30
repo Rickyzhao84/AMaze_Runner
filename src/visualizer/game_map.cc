@@ -48,15 +48,15 @@ namespace visualizer_app {
     }
 
     void GameMap::MoveMonsters() {
-        monster_locations_.clear();
-        //Find new locations of monsters
-        for (size_t i = 0; i < dimension_; i++) {
-            for (size_t j = 0; j < dimension_; j++) {
-                if (map_model_[i][j] == NodeLabel::MonsterNode) {
-                    monster_locations_.push_back(vec2(i, j));
-                }
-            }
-        }
+//        monster_locations_.clear();
+//        //Find new locations of monsters
+//        for (size_t i = 0; i < dimension_; i++) {
+//            for (size_t j = 0; j < dimension_; j++) {
+//                if (map_model_[i][j] == NodeLabel::MonsterNode) {
+//                    monster_locations_.push_back(vec2(i, j));
+//                }
+//            }
+//        }
         
         for (size_t i = 0; i < monster_locations_.size(); i++) {
             //Compare monster locations with player location and move monster location closer to player
@@ -188,6 +188,14 @@ namespace visualizer_app {
                 monster_pixels_.push_back(vec2(random_point_x_coord, random_point_y_coord));
                 map_model_[random_point_x_coord][random_point_y_coord] = NodeLabel::MonsterNode;
                 monster_nodes_.pop_back();
+            }
+        }
+
+        for (size_t i = 0; i < dimension_; i++) {
+            for (size_t j = 0; j < dimension_; j++) {
+                if (map_model_[i][j] == NodeLabel::MonsterNode) {
+                    monster_locations_.push_back(vec2(i, j));
+                }
             }
         }
     }

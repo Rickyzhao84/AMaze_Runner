@@ -17,6 +17,7 @@ namespace visualizer_app {
             //Update the color of current node and image and move all monsters as well
             location.SetXCoord(original_x_coord - 1);
             game_map.UpdateMapPixel(location.GetYCoord(), location.GetXCoord(), NextImage::LookLeft);
+            //Move movemonster function into a wrapper function in gamemap
             game_map.MoveMonsters();
         }
 
