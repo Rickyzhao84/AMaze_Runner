@@ -9,8 +9,6 @@ namespace visualizer_app {
 
     public:
 
-        Button(glm::vec2 top_left_corner, glm::vec2 bottom_right_corner);
-
         Button();
 
         /**

@@ -1,13 +1,14 @@
 #include <glm/glm.hpp>
+#include <visualizer/visualizer_app.h>
 #include "visualizer/button.h"
 
 namespace visualizer_app {
     
     using glm::vec2;
-    
-    Button::Button(vec2 top_left_corner, vec2 bottom_right_corner) {
-        top_left_corner_ = top_left_corner;
-        bottom_right_corner_ = bottom_right_corner;
+
+    Button::Button() {
+        top_left_corner_ = kButtonTopLeft;
+        bottom_right_corner_ = kButtonBottomRight;
     }
     
     void Button::Draw() const {
@@ -15,12 +16,6 @@ namespace visualizer_app {
         ci::gl::drawSolidRect(button);
         ci::gl::drawStrokedRect(button);
         ci::gl::color(ci::Color("green"));
-    }
-
-    Button::Button() {
-        //Hardcoded for now, will be fixed later
-        top_left_corner_ = vec2(1100, 10);
-        bottom_right_corner_ = vec2(1150, 40);
     }
 
     void Button::SetTopLeftCorner(const vec2 &topLeftCorner) {

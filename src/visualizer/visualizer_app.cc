@@ -88,8 +88,8 @@ namespace visualizer_app {
     }
     
     void VisualizerApp::mouseDown(ci::app::MouseEvent event) {
-        if (event.getX() > 1100 && event.getX() < 1150) {
-            if (event.getY() > 10 && event.getY() < 40) {
+        if (event.getX() > kButtonTopLeft.x && event.getX() < kButtonBottomRight.x) {
+            if (event.getY() > kButtonTopLeft.y && event.getY() < kButtonBottomRight.y) {
                 game_map_.Clear();
                 game_map_.map_model_ = vector<vector<NodeLabel>>(kDimension, vector<NodeLabel>(kDimension, NodeLabel::RegularNode));
                 game_map_.CreateNodes();
