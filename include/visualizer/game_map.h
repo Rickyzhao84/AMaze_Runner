@@ -70,14 +70,14 @@ namespace visualizer_app {
             void FindNextDirection(double pixel_side_length) const;
             
             /**
-             * Create different nodes that will be placed on the map
-             */
-            void CreateNodes();
-            
-            /**
              * Create the 2d vector map model that represents the map
              */
             void CreateMapModel();
+            
+            /**
+             * Create monster locations every frame
+             */
+            void CreateMonsterLocations();
             
             /**
              * Set pixel color, new user location_, and next character image
@@ -139,10 +139,6 @@ namespace visualizer_app {
             glm::vec2 top_left_corner_;
             size_t dimension_;
             double map_size_;
-            std::vector<ObstacleNode> obstacle_nodes_;
-            std::vector<MonsterNode> monster_nodes_;
-            StartingNode starting_node_;
-            EndingNode ending_node_;
             std::vector<glm::vec2> obstacle_pixels_;
             std::vector<glm::vec2> monster_pixels_;
         };

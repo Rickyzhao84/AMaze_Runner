@@ -29,7 +29,6 @@ namespace visualizer_app {
                         kDimension, kWindowSize) {
         
         ci::app::setWindowSize((int) kWindowSize + 250, (int) kWindowSize);
-        game_map_.CreateNodes();
         game_map_.CreateMapModel();
         //Set starting_location_ same as the one in map_model_
         for (size_t i = 0; i < kDimension; i++) {
@@ -100,7 +99,6 @@ namespace visualizer_app {
             if (event.getY() > kButtonTopLeft.y && event.getY() < kButtonBottomRight.y) {
                 game_map_.Clear();
                 game_map_.map_model_ = vector<vector<NodeLabel>>(kDimension, vector<NodeLabel>(kDimension, NodeLabel::RegularNode));
-                game_map_.CreateNodes();
                 game_map_.CreateMapModel();
                 //Set starting_location_ same as the one in map_model_
                 for (size_t i = 0; i < kDimension; i++) {

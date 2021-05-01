@@ -12,7 +12,6 @@ using std::vector;
 
 TEST_CASE("Map generates same amount of nodes as required") {
     visualizer_app::GameMap map_one(vec2(1,1), 25, 100);
-    map_one.CreateNodes();
     map_one.CreateMapModel();
     SECTION("Generates kNumOfObstaclesNodes obstacle nodes") {
         size_t count = 0;
@@ -52,9 +51,7 @@ TEST_CASE("Map generates same amount of nodes as required") {
 TEST_CASE("Map generates a different starting point each game") {
     visualizer_app::GameMap map_one(vec2(1,1), 25, 100);
     visualizer_app::GameMap map_two(vec2(1,1), 25, 100);
-    map_one.CreateNodes();
     map_one.CreateMapModel();
-    map_two.CreateNodes();
     map_two.CreateMapModel();
     vec2 starting_pixel_one = vec2(map_one.location_.GetXCoord(),map_one.location_.GetYCoord());
     vec2 starting_pixel_two = vec2(map_two.location_.GetXCoord(), map_two.location_.GetYCoord());

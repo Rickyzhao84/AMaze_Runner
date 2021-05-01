@@ -48,15 +48,6 @@ namespace visualizer_app {
     }
 
     void GameMap::MoveMonsters() {
-//        monster_locations_.clear();
-//        //Find new locations of monsters
-//        for (size_t i = 0; i < dimension_; i++) {
-//            for (size_t j = 0; j < dimension_; j++) {
-//                if (map_model_[i][j] == NodeLabel::MonsterNode) {
-//                    monster_locations_.push_back(vec2(i, j));
-//                }
-//            }
-//        }
         
         for (size_t i = 0; i < monster_locations_.size(); i++) {
             //Compare monster locations with player location_ and move monster location_ closer to player
@@ -118,11 +109,11 @@ namespace visualizer_app {
     NodeLabel GameMap::DrawNodes(size_t row, size_t column) const {
         //If the node at the pixel is starting node or a walked node
         if (map_model_[row][column] == NodeLabel::StartingNode) {
-            ci::gl::color(starting_node_.GetNodeColor());
+            ci::gl::color(kStartingNodeColor);
             return NodeLabel::StartingNode;
         } else if (map_model_[row][column] == NodeLabel::EndingNode) {
             //If the node at the pixel is ending node
-            ci::gl::color(ending_node_.GetNodeColor());
+            ci::gl::color(kEndingNodeColor);
             return NodeLabel::EndingNode;
         } else if (map_model_[row][column] == NodeLabel::ObstacleNode) {
             //If the node at the pixel is an obstacle node
@@ -163,7 +154,7 @@ namespace visualizer_app {
             map_model_[random_point_x_coord][random_point_y_coord] = NodeLabel::EndingNode;
         }
 
-        while (!obstacle_nodes_.empty()) {
+        for (size_t i = 0; i < kNumOfObstacleNodes; i++) {
             size_t random_point_x_coord = rand() % (dimension_);
             size_t random_point_y_coord = rand() % (dimension_);
 
@@ -172,12 +163,10 @@ namespace visualizer_app {
                 //obstacle_node represented by 3
                 obstacle_pixels_.push_back(vec2(random_point_x_coord, random_point_y_coord));
                 map_model_[random_point_x_coord][random_point_y_coord] = NodeLabel::ObstacleNode;
-                obstacle_nodes_.pop_back();
             }
         }
 
-        //Set monster locations given the occupied locations
-        while (!monster_nodes_.empty()) {
+        for (size_t i = 0; i < kNumOfMonsterNodes; i++) {
             size_t random_point_x_coord = rand() % (dimension_);
             size_t random_point_y_coord = rand() % (dimension_);
 
@@ -187,33 +176,19 @@ namespace visualizer_app {
 
                 monster_pixels_.push_back(vec2(random_point_x_coord, random_point_y_coord));
                 map_model_[random_point_x_coord][random_point_y_coord] = NodeLabel::MonsterNode;
-                monster_nodes_.pop_back();
             }
         }
-
+        
+        CreateMonsterLocations();
+    }
+    
+    void GameMap::CreateMonsterLocations() {
         for (size_t i = 0; i < dimension_; i++) {
             for (size_t j = 0; j < dimension_; j++) {
                 if (map_model_[i][j] == NodeLabel::MonsterNode) {
                     monster_locations_.push_back(vec2(i, j));
                 }
             }
-        }
-    }
-
-    void GameMap::CreateNodes() {
-        //Set color to nodes
-        starting_node_.SetNodeColor(kStartingNodeColor);
-        ending_node_.SetNodeColor(kEndingNodeColor);
-
-        for (size_t i = 0; i < kNumOfObstacleNodes; i++) {
-            //Create kNumOfObstacleNodes ObstacleNodes and set color to them 
-            ObstacleNode new_obstacle(kObstacleColor);
-            obstacle_nodes_.push_back(new_obstacle);
-        }
-
-        for (size_t i = 0; i < kNumOfMonsterNodes; i++) {
-            MonsterNode new_monster(KRegularNodeColor);
-            monster_nodes_.push_back(new_monster);
         }
     }
 
