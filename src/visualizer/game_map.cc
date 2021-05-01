@@ -7,15 +7,14 @@ namespace visualizer_app {
     using std::vector;
     using std::string;
 
-    GameMap::GameMap(const glm::vec2 &top_left_corner, size_t dimension, double map_size)
-            : starting_node_(cinder::Color()), ending_node_(cinder::Color()) {
+    GameMap::GameMap(const glm::vec2 &top_left_corner, size_t dimension, double map_size) {
         top_left_corner_ = top_left_corner;
         dimension_ = dimension;
         map_model_ = vector<vector<NodeLabel>>(dimension_, vector<NodeLabel>(dimension_, NodeLabel::RegularNode));
         map_size_ = map_size;
     }
 
-    GameMap::GameMap() : starting_node_(cinder::Color()), ending_node_(cinder::Color()) {}
+    GameMap::GameMap() {}
 
     void GameMap::Draw() const {
         double pixel_side_length = map_size_ / dimension_;

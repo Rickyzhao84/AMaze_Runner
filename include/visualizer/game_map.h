@@ -3,7 +3,6 @@
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
-#include "core/node.h"
 #include "core/location.h"
 
 namespace visualizer_app {
