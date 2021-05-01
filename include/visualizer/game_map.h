@@ -84,7 +84,7 @@ namespace visualizer_app {
              * @param row x coord
              * @param column y coord
              */
-            void UpdateMapPixel(size_t row, size_t column, NextImage next_image);
+            void UpdateToNewLocation(size_t row, size_t column, NextImage next_image);
 
             /**
              * Check if the pixel user wants to move to is an obstacle node or monster node
@@ -94,13 +94,10 @@ namespace visualizer_app {
              */
             bool IsPixelAnObstacle(size_t row, size_t column);
             
-            void Clear();
-            
             /**
-             * Generate a random color that will be used to create animations
-             * @return random size_t to create colors
+             * Clear map and its related nodes
              */
-            size_t GenerateColorNumber();
+            void Clear();
 
             const static size_t kTotalColorNumbers = 256;
             

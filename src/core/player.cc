@@ -16,7 +16,7 @@ namespace visualizer_app {
             
             //Update the color of current node and image and move all monsters as well
             location.SetXCoord(original_x_coord - 1);
-            game_map.UpdateMapPixel(location.GetYCoord(), location.GetXCoord(), NextImage::LookLeft);
+            game_map.UpdateToNewLocation(location.GetYCoord(), location.GetXCoord(), NextImage::LookLeft);
             //Move movemonster function into a wrapper function in gamemap
             game_map.MoveMonsters();
         }
@@ -30,7 +30,7 @@ namespace visualizer_app {
             !game_map.IsPixelAnObstacle(original_x_coord + 1, location.GetYCoord())) {
             
             location.SetXCoord(original_x_coord + 1);
-            game_map.UpdateMapPixel(location.GetYCoord(), location.GetXCoord(), NextImage::LookRight);
+            game_map.UpdateToNewLocation(location.GetYCoord(), location.GetXCoord(), NextImage::LookRight);
             game_map.MoveMonsters();
         }
 
@@ -43,7 +43,7 @@ namespace visualizer_app {
             !game_map.IsPixelAnObstacle(location.GetXCoord(), original_y_coord + 1)) {
             
             location.SetYCoord(original_y_coord + 1);
-            game_map.UpdateMapPixel(location.GetYCoord(), location.GetXCoord(), NextImage::LookDown);
+            game_map.UpdateToNewLocation(location.GetYCoord(), location.GetXCoord(), NextImage::LookDown);
             game_map.MoveMonsters();
         }
 
@@ -56,7 +56,7 @@ namespace visualizer_app {
             !game_map.IsPixelAnObstacle(location.GetXCoord(), original_y_coord - 1)) {
             
             location.SetYCoord(original_y_coord - 1);
-            game_map.UpdateMapPixel(location.GetYCoord(), location.GetXCoord(), NextImage::LookUp);
+            game_map.UpdateToNewLocation(location.GetYCoord(), location.GetXCoord(), NextImage::LookUp);
             game_map.MoveMonsters();
         }
 

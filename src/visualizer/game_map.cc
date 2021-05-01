@@ -240,7 +240,7 @@ namespace visualizer_app {
         map_model_.clear();
     }
 
-    void GameMap::UpdateMapPixel(size_t row, size_t column, NextImage next_image) {
+    void GameMap::UpdateToNewLocation(size_t row, size_t column, NextImage next_image) {
         //Change the pixel to a walked pixel
         if (map_model_[row][column] != NodeLabel::EndingNode) {
             map_model_[row][column] = NodeLabel::StartingNode;
@@ -248,10 +248,6 @@ namespace visualizer_app {
         location_.SetYCoord(column);
         location_.SetXCoord(row);
         determine_next_image = next_image;
-    }
-
-    size_t GameMap::GenerateColorNumber() {
-        return rand() % kTotalColorNumbers;
     }
 
 }
