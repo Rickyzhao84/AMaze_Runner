@@ -22,34 +22,34 @@ TEST_CASE("Player can move using the arrow keys") {
     game_map.map_model_ = vector;
     
     SECTION("Move right") {
-        REQUIRE(player.location.GetXCoord() == 0);
-        REQUIRE(player.location.GetYCoord() == 0);
+        REQUIRE(player.location_.GetXCoord() == 0);
+        REQUIRE(player.location_.GetYCoord() == 0);
         player.MoveRight(3, game_map);
-        REQUIRE(player.location.GetXCoord() == 1);
-        REQUIRE(player.location.GetYCoord() == 0);
+        REQUIRE(player.location_.GetXCoord() == 1);
+        REQUIRE(player.location_.GetYCoord() == 0);
     }
     SECTION("Move up") {
-        player.location.SetXCoord(1);
-        player.location.SetYCoord(1);
+        player.location_.SetXCoord(1);
+        player.location_.SetYCoord(1);
         player.MoveUp(game_map);
-        REQUIRE(player.location.GetXCoord() == 1);
-        REQUIRE(player.location.GetYCoord() == 0);
+        REQUIRE(player.location_.GetXCoord() == 1);
+        REQUIRE(player.location_.GetYCoord() == 0);
 
     }
     SECTION("Move down") {
-        REQUIRE(player.location.GetXCoord() == 0);
-        REQUIRE(player.location.GetYCoord() == 0);
+        REQUIRE(player.location_.GetXCoord() == 0);
+        REQUIRE(player.location_.GetYCoord() == 0);
         player.MoveDown(3, game_map);
-        REQUIRE(player.location.GetXCoord() == 0);
-        REQUIRE(player.location.GetYCoord() == 1);
+        REQUIRE(player.location_.GetXCoord() == 0);
+        REQUIRE(player.location_.GetYCoord() == 1);
 
     }
     SECTION("Move left") {
-        player.location.SetXCoord(1);
-        player.location.SetYCoord(1);
+        player.location_.SetXCoord(1);
+        player.location_.SetYCoord(1);
         player.MoveLeft(game_map);
-        REQUIRE(player.location.GetXCoord() == 0);
-        REQUIRE(player.location.GetYCoord() == 1);
+        REQUIRE(player.location_.GetXCoord() == 0);
+        REQUIRE(player.location_.GetYCoord() == 1);
     }
 }
 
@@ -66,13 +66,13 @@ TEST_CASE("Obstacles and monsters should block player from moving to that direct
 
     SECTION("Attempt to move right to obstacle should fail") {
         player.MoveRight(3, game_map);
-        REQUIRE(player.location.GetXCoord() == 1);
-        REQUIRE(player.location.GetYCoord() == 0);
+        REQUIRE(player.location_.GetXCoord() == 1);
+        REQUIRE(player.location_.GetYCoord() == 0);
     }
     SECTION("Attempt to move down to monster should fail") {
         player.MoveDown(3, game_map);
-        REQUIRE(player.location.GetXCoord() == 0);
-        REQUIRE(player.location.GetYCoord() == 1);
+        REQUIRE(player.location_.GetXCoord() == 0);
+        REQUIRE(player.location_.GetYCoord() == 1);
 
     }
 }
@@ -90,12 +90,12 @@ TEST_CASE("Player shouldn't go out of bounds") {
     
     SECTION("Cannot move left") {
         player.MoveLeft(game_map);
-        REQUIRE(player.location.GetXCoord() == 0);
-        REQUIRE(player.location.GetYCoord() == 0);
+        REQUIRE(player.location_.GetXCoord() == 0);
+        REQUIRE(player.location_.GetYCoord() == 0);
     }
     SECTION("Cannot move up") {
         player.MoveUp(game_map);
-        REQUIRE(player.location.GetXCoord() == 0);
-        REQUIRE(player.location.GetYCoord() == 0);
+        REQUIRE(player.location_.GetXCoord() == 0);
+        REQUIRE(player.location_.GetYCoord() == 0);
     }
 }

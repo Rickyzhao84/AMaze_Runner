@@ -80,7 +80,7 @@ namespace visualizer_app {
             void CreateMapModel();
             
             /**
-             * Set pixel color, new user location, and next character image
+             * Set pixel color, new user location_, and next character image
              * @param row x coord
              * @param column y coord
              */

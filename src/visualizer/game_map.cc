@@ -59,7 +59,7 @@ namespace visualizer_app {
 //        }
         
         for (size_t i = 0; i < monster_locations_.size(); i++) {
-            //Compare monster locations with player location and move monster location closer to player
+            //Compare monster locations with player location_ and move monster location_ closer to player
             //Only move if the next node is a regular node because monsters are also blocked from obstacles
             
             if (monster_locations_[i].x < location_.GetXCoord() &&

@@ -84,7 +84,7 @@ TEST_CASE("Monster move closer to player") {
         game_map.MoveMonsters();
         REQUIRE(game_map.map_model_[0][1] == visualizer_app::NodeLabel::MonsterNode);
     }
-    SECTION("Monster doesn't move to player location if player is already at location") {
+    SECTION("Monster doesn't move to player location_ if player is already at location_") {
         game_map.map_model_ =
                 {
                         {visualizer_app::NodeLabel::MonsterNode, visualizer_app::NodeLabel::RegularNode, visualizer_app::NodeLabel::RegularNode},

@@ -35,8 +35,8 @@ namespace visualizer_app {
         for (size_t i = 0; i < kDimension; i++) {
             for (size_t j = 0; j < kDimension; j++) {
                 if (game_map_.map_model_[i][j] == NodeLabel::StartingNode) {
-                    player_.location.SetXCoord(j);
-                    player_.location.SetYCoord(i);
+                    player_.location_.SetXCoord(j);
+                    player_.location_.SetYCoord(i);
                 }
             }
         }
@@ -65,22 +65,30 @@ namespace visualizer_app {
     void VisualizerApp::keyDown(ci::app::KeyEvent event) {
         switch (event.getCode()) {
             case ci::app::KeyEvent::KEY_LEFT: {
-                player_.MoveLeft(game_map_);
+                if (player_.MoveLeft(game_map_)) {
+                    game_map_.MoveMonsters();
+                }
 
                 break;
             }
             case ci::app::KeyEvent::KEY_RIGHT: {
-                player_.MoveRight(kDimension, game_map_);
+                if (player_.MoveRight(kDimension, game_map_)) {
+                    game_map_.MoveMonsters();
+                }
 
                 break;
             }
             case ci::app::KeyEvent::KEY_DOWN: {
-                player_.MoveDown(kDimension, game_map_);
+                if (player_.MoveDown(kDimension, game_map_)) {
+                    game_map_.MoveMonsters();
+                }
 
                 break;
             }
             case ci::app::KeyEvent::KEY_UP: {
-                player_.MoveUp(game_map_);
+                if (player_.MoveUp(game_map_)) {
+                    game_map_.MoveMonsters();
+                }
 
                 break;
             }
@@ -98,8 +106,8 @@ namespace visualizer_app {
                 for (size_t i = 0; i < kDimension; i++) {
                     for (size_t j = 0; j < kDimension; j++) {
                         if (game_map_.map_model_[i][j] == NodeLabel::StartingNode) {
-                            player_.location.SetXCoord(j);
-                            player_.location.SetYCoord(i);
+                            player_.location_.SetXCoord(j);
+                            player_.location_.SetYCoord(i);
                         }
                     }
                 }
