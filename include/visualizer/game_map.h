@@ -73,6 +73,8 @@ namespace visualizer_app {
              */
             void CreateMapModel();
             
+            void CreateEndPoint();
+            
             /**
              * Create monster locations every frame
              */
@@ -98,7 +100,7 @@ namespace visualizer_app {
              */
             void Clear();
 
-            const static size_t kTotalColorNumbers = 256;
+            const static size_t kDistanceThreshold = 15;
             
             const static size_t kNumOfObstacleNodes = 50;
             

@@ -12,8 +12,8 @@
 
 namespace visualizer_app {
     
-    const static glm::vec2 kButtonTopLeft(1100, 10);
-    const static glm::vec2 kButtonBottomRight(1150, 40);
+    const static glm::vec2 kButtonTopLeft(1080, 10);
+    const static glm::vec2 kButtonBottomRight(1180, 40);
 
 
         class VisualizerApp : public ci::app::App {

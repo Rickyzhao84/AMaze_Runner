@@ -12,10 +12,11 @@ namespace visualizer_app {
     }
     
     void Button::Draw() const {
-        ci::Rectf button(top_left_corner_, bottom_right_corner_);
-        ci::gl::drawSolidRect(button);
-        ci::gl::drawStrokedRect(button);
-        ci::gl::color(ci::Color("green"));
+        ci::gl::TextureRef texture = ci::gl::Texture::create(
+                ci::loadImage(kButtonImage));
+        ci::Rectf object(top_left_corner_, bottom_right_corner_);
+
+        ci::gl::draw(texture, object);
     }
 
     void Button::SetTopLeftCorner(const vec2 &topLeftCorner) {

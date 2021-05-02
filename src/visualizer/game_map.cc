@@ -141,17 +141,12 @@ namespace visualizer_app {
 
         size_t random_point_x_coord = rand() % (dimension_);
         size_t random_point_y_coord = rand() % (dimension_);
-        //starting_node represented by 1
+
         map_model_[random_point_x_coord][random_point_y_coord] = NodeLabel::StartingNode;
         location_.SetXCoord(random_point_x_coord);
         location_.SetYCoord(random_point_y_coord);
 
-        random_point_x_coord = rand() % (dimension_);
-        random_point_y_coord = rand() % (dimension_);
-        if (map_model_[random_point_x_coord][random_point_y_coord] != NodeLabel::StartingNode) {
-            //ending_node represented by 2
-            map_model_[random_point_x_coord][random_point_y_coord] = NodeLabel::EndingNode;
-        }
+        CreateEndPoint();
 
         for (size_t i = 0; i < kNumOfObstacleNodes; i++) {
             size_t random_point_x_coord = rand() % (dimension_);
@@ -159,13 +154,14 @@ namespace visualizer_app {
 
             if (map_model_[random_point_x_coord][random_point_y_coord] != NodeLabel::StartingNode &&
                 map_model_[random_point_x_coord][random_point_y_coord] != NodeLabel::EndingNode) {
-                //obstacle_node represented by 3
+                
                 obstacle_pixels_.push_back(vec2(random_point_x_coord, random_point_y_coord));
                 map_model_[random_point_x_coord][random_point_y_coord] = NodeLabel::ObstacleNode;
             }
         }
 
         for (size_t i = 0; i < kNumOfMonsterNodes; i++) {
+            
             size_t random_point_x_coord = rand() % (dimension_);
             size_t random_point_y_coord = rand() % (dimension_);
 
@@ -179,6 +175,22 @@ namespace visualizer_app {
         }
         
         CreateMonsterLocations();
+    }
+    
+    void GameMap::CreateEndPoint() {
+        bool is_end_far_from_start = false;
+        while (!is_end_far_from_start) {
+            size_t random_point_x_coord = rand() % (dimension_);
+            size_t random_point_y_coord = rand() % (dimension_);
+
+            if (map_model_[random_point_x_coord][random_point_y_coord] != NodeLabel::StartingNode &&
+                    (std::abs((int) (random_point_x_coord - location_.GetXCoord())) > kDistanceThreshold ||
+                     std::abs((int) (random_point_y_coord - location_.GetYCoord())) > kDistanceThreshold)) {
+                
+                map_model_[random_point_x_coord][random_point_y_coord] = NodeLabel::EndingNode;
+                is_end_far_from_start = true;
+            }
+        }
     }
     
     void GameMap::CreateMonsterLocations() {
