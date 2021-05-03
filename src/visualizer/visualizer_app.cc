@@ -1,18 +1,10 @@
 #pragma once
 
 #include "cinder/app/App.h"
-#include "cinder/app/RendererGl.h"
-#include "cinder/audio/SamplePlayerNode.h"
-#include "cinder/audio/Source.h"
-#include "cinder/audio/Voice.h"
 #include "cinder/gl/gl.h"
 #include "cinder/Log.h"
-#include "cinder/ImageIo.h"
-#include "cinder/gl/Texture.h"
 #include <visualizer/visualizer_app.h>
-#include <visualizer/game_map.h>
-#include <core/Location.h>
-#include "cinder/app/AppBase.h"
+
 
 namespace visualizer_app {
 
@@ -57,30 +49,22 @@ namespace visualizer_app {
     void VisualizerApp::keyDown(ci::app::KeyEvent event) {
         switch (event.getCode()) {
             case ci::app::KeyEvent::KEY_LEFT: {
-                if (player_.MoveLeft(game_map_)) {
-                    game_map_.MoveMonsters();
-                }
+                game_engine_.HandleTurn(1, player_, game_map_);
 
                 break;
             }
             case ci::app::KeyEvent::KEY_RIGHT: {
-                if (player_.MoveRight(kDimension, game_map_)) {
-                    game_map_.MoveMonsters();
-                }
+                game_engine_.HandleTurn(2, player_, game_map_);
 
                 break;
             }
             case ci::app::KeyEvent::KEY_DOWN: {
-                if (player_.MoveDown(kDimension, game_map_)) {
-                    game_map_.MoveMonsters();
-                }
+                game_engine_.HandleTurn(3, player_, game_map_);
 
                 break;
             }
             case ci::app::KeyEvent::KEY_UP: {
-                if (player_.MoveUp(game_map_)) {
-                    game_map_.MoveMonsters();
-                }
+                game_engine_.HandleTurn(4, player_, game_map_);
 
                 break;
             }

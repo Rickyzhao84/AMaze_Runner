@@ -135,12 +135,11 @@ namespace visualizer_app {
             std::vector<glm::vec2> monster_locations_;
             
             Location location_;
-            
+
+            size_t dimension_;
             
         private:
-            
             glm::vec2 top_left_corner_;
-            size_t dimension_;
             double map_size_;
             std::vector<glm::vec2> obstacle_pixels_;
             std::vector<glm::vec2> monster_pixels_;

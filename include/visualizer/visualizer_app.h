@@ -8,6 +8,7 @@
 #include "button.h"
 #include <core/Location.h>
 #include <core/player.h>
+#include <core/game_engine.h>
 
 
 namespace visualizer_app {
@@ -42,6 +43,7 @@ namespace visualizer_app {
             const double kWindowSize = 1000;
 
         private:
+            GameEngine game_engine_;
             GameMap game_map_;
             Button button_;
             Player player_;
