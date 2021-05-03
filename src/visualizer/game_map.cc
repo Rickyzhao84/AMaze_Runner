@@ -49,6 +49,7 @@ namespace visualizer_app {
     void GameMap::MoveMonsters() {
         
         for (size_t i = 0; i < monster_locations_.size(); i++) {
+            
             //Compare monster locations with player location_ and move monster location_ closer to player
             //Only move if the next node is a regular node because monsters are also blocked from obstacles
             
@@ -89,8 +90,8 @@ namespace visualizer_app {
     }
 
     void GameMap::SetNextMonstersLocation(float prev_x, float prev_y, float next_x, float next_y) {
-        map_model_[(size_t)prev_x][(size_t)prev_y] = NodeLabel::RegularNode;
-        map_model_[(size_t)next_x][(size_t)next_y] = NodeLabel::MonsterNode;
+        map_model_[(size_t) prev_x][(size_t) prev_y] = NodeLabel::RegularNode;
+        map_model_[(size_t) next_x][(size_t) next_y] = NodeLabel::MonsterNode;
     }
     
     void GameMap::FindNextDirection(double pixel_side_length) const {
