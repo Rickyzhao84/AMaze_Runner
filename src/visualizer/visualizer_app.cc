@@ -39,13 +39,6 @@ namespace visualizer_app {
                 }
             }
         }
-
-//        //Audio code derived from
-//        //https://libcinder.org/docs/guides/audio/index.html
-//        ci::audio::SourceFileRef sourceFile = ci::audio::load(ci::app::loadAsset("jokes.wav"));
-//        ci::audio::VoiceRef mVoice;
-//        mVoice = ci::audio::Voice::create(sourceFile);
-//        mVoice->start();
     }
 
     void VisualizerApp::draw() {

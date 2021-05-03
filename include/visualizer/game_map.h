@@ -62,6 +62,8 @@ namespace visualizer_app {
              */
             void MoveMonsters();
             
+            void SetNextMonstersLocation(float prev_x, float prev_y, float next_x, float next_y);
+            
             /**
              * Find the next direction where player is heading and draw character image facing that direction
              * @param pixel_side_length is side length of a pixel

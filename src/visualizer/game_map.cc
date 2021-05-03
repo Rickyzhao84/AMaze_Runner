@@ -55,39 +55,44 @@ namespace visualizer_app {
             if (monster_locations_[i].x < location_.GetXCoord() &&
                 map_model_[(size_t) monster_locations_[i].x + 1][(size_t) monster_locations_[i].y] ==
                 NodeLabel::RegularNode) {
+                
+                SetNextMonstersLocation(monster_locations_[i].x, monster_locations_[i].y, 
+                                        monster_locations_[i].x + 1, monster_locations_[i].y);
 
-                map_model_[(size_t) monster_locations_[i].x][(size_t) monster_locations_[i].y] = NodeLabel::RegularNode;
-                map_model_[(size_t) monster_locations_[i].x +
-                           1][(size_t) monster_locations_[i].y] = NodeLabel::MonsterNode;
                 monster_locations_[i].x++;
             } else if (monster_locations_[i].x > location_.GetXCoord() &&
                        map_model_[(size_t) monster_locations_[i].x - 1][(size_t) monster_locations_[i].y] ==
                        NodeLabel::RegularNode) {
 
-                map_model_[(size_t) monster_locations_[i].x][(size_t) monster_locations_[i].y] = NodeLabel::RegularNode;
-                map_model_[(size_t) monster_locations_[i].x -
-                           1][(size_t) monster_locations_[i].y] = NodeLabel::MonsterNode;
+                SetNextMonstersLocation(monster_locations_[i].x, monster_locations_[i].y,
+                                        monster_locations_[i].x - 1, monster_locations_[i].y);
+                
                 monster_locations_[i].x--;
             } else if (monster_locations_[i].y > location_.GetYCoord() &&
                        map_model_[(size_t) monster_locations_[i].x][(size_t) monster_locations_[i].y - 1] ==
                        NodeLabel::RegularNode) {
 
-                map_model_[(size_t) monster_locations_[i].x][(size_t) monster_locations_[i].y] = NodeLabel::RegularNode;
-                map_model_[(size_t) monster_locations_[i].x][(size_t) monster_locations_[i].y -
-                                                             1] = NodeLabel::MonsterNode;
+                SetNextMonstersLocation(monster_locations_[i].x, monster_locations_[i].y,
+                                        monster_locations_[i].x, monster_locations_[i].y - 1);
+
                 monster_locations_[i].y--;
             } else if (monster_locations_[i].y < location_.GetYCoord() &&
                        map_model_[(size_t) monster_locations_[i].x][(size_t) monster_locations_[i].y + 1] ==
                        NodeLabel::RegularNode) {
 
-                map_model_[(size_t) monster_locations_[i].x][(size_t) monster_locations_[i].y] = NodeLabel::RegularNode;
-                map_model_[(size_t) monster_locations_[i].x][(size_t) monster_locations_[i].y +
-                                                             1] = NodeLabel::MonsterNode;
+                SetNextMonstersLocation(monster_locations_[i].x, monster_locations_[i].y,
+                                        monster_locations_[i].x, monster_locations_[i].y + 1);
+
                 monster_locations_[i].y++;
             }
         }
     }
 
+    void GameMap::SetNextMonstersLocation(float prev_x, float prev_y, float next_x, float next_y) {
+        map_model_[(size_t)prev_x][(size_t)prev_y] = NodeLabel::RegularNode;
+        map_model_[(size_t)next_x][(size_t)next_y] = NodeLabel::MonsterNode;
+    }
+    
     void GameMap::FindNextDirection(double pixel_side_length) const {
         //Find top left corner of pixel given the top left corner of map
         vec2 pixel_top_left = top_left_corner_ + vec2(location_.GetYCoord() * pixel_side_length,
