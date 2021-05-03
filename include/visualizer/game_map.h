@@ -62,8 +62,6 @@ namespace visualizer_app {
              */
             void MoveMonsters();
             
-            void TakeTurn(ci::app::KeyEvent);
-            
             void SetNextMonstersLocation(float prev_x, float prev_y, float next_x, float next_y);
             
             /**
