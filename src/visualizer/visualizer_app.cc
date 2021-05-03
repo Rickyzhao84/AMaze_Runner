@@ -60,7 +60,6 @@ namespace visualizer_app {
                 if (player_.MoveLeft(game_map_)) {
                     game_map_.MoveMonsters();
                 }
-                
 
                 break;
             }
