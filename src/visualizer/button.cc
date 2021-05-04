@@ -3,14 +3,14 @@
 #include "visualizer/button.h"
 
 namespace visualizer_app {
-    
+
     using glm::vec2;
 
     Button::Button() {
         top_left_corner_ = kButtonTopLeft;
         bottom_right_corner_ = kButtonBottomRight;
     }
-    
+
     void Button::Draw() const {
         ci::gl::TextureRef texture = ci::gl::Texture::create(
                 ci::loadImage(kButtonImage));

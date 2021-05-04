@@ -1,12 +1,12 @@
 #include <core/location.h>
 
 namespace visualizer_app {
-    
+
     Location::Location(size_t row, size_t column) {
         x_coord_ = row;
         y_coord_ = column;
     }
-    
+
     Location::Location() {
         x_coord_ = 0;
         y_coord_ = 0;

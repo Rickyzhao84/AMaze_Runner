@@ -12,48 +12,45 @@
 
 
 namespace visualizer_app {
-    
+
     const static glm::vec2 kButtonTopLeft(1080, 10);
     const static glm::vec2 kButtonBottomRight(1180, 40);
 
 
-        class VisualizerApp : public ci::app::App {
-        public:
-            
-            /**
-             * Constructor of the app
-             */
-            VisualizerApp();
-            
-            /**
-             * Draw the application and related items on the screen
-             */
-            void draw() override;
+    class VisualizerApp : public ci::app::App {
+    public:
 
-            /**
-             * When user clicks down on a key
-             * @param event 
-             */
-            void keyDown(ci::app::KeyEvent event) override;
-            
-            /**
-             * When user left click the restart button
-             * @param event 
-             */
-            void mouseDown(ci::app::MouseEvent event);
+        /**
+         * Constructor of the app
+         */
+        VisualizerApp();
 
-            const size_t kDimension = 35;
-            const double kTopLeftCornerCoordinate = 10;
-            const double kWindowSize = 1000;
+        /**
+         * Draw the application and related items on the screen
+         */
+        void draw() override;
 
-        private:
-            GameEngine game_engine_;
-            GameMap game_map_;
-            Button button_;
-            Player player_;
-            EndGame end_game_screen_;
-        };
+        /**
+         * When user clicks down on a key
+         * @param event 
+         */
+        void keyDown(ci::app::KeyEvent event) override;
 
+        /**
+         * When user left click the restart button
+         * @param event 
+         */
+        void mouseDown(ci::app::MouseEvent event);
 
-    
+        const size_t kDimension = 35;
+        const double kTopLeftCornerCoordinate = 10;
+        const double kWindowSize = 1000;
+
+    private:
+        GameEngine game_engine_;
+        GameMap game_map_;
+        Button button_;
+        Player player_;
+        EndGame end_game_screen_;
+    };
 }

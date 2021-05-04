@@ -22,6 +22,6 @@ namespace visualizer_app {
 
         glm::vec2 top_left_corner_;
         glm::vec2 bottom_right_corner_;
-        
+
     };
 }
