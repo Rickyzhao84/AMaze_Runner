@@ -92,6 +92,7 @@ namespace visualizer_app {
     void GameMap::SetNextMonstersLocation(float prev_x, float prev_y, float next_x, float next_y) {
         map_model_[(size_t) prev_x][(size_t) prev_y] = NodeLabel::RegularNode;
         map_model_[(size_t) next_x][(size_t) next_y] = NodeLabel::MonsterNode;
+        
     }
     
     void GameMap::FindNextDirection(double pixel_side_length) const {
