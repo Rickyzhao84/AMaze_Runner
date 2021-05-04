@@ -7,6 +7,9 @@
 
 namespace visualizer_app {
 
+    /**
+     * Label of different nodes used when setting up maps
+     */
     enum class NodeLabel {
         StartingNode,
         EndingNode,
@@ -15,6 +18,9 @@ namespace visualizer_app {
         RegularNode
     };
     
+    /**
+     * Label of the direction player is currently looking at, used to create player image
+     */
     enum class NextImage {
         LookUp,
         LookDown,
@@ -35,6 +41,9 @@ namespace visualizer_app {
             GameMap(const glm::vec2 &top_left_corner, size_t dimension,
                     double map_size);
             
+            /**
+             * Empty constructor for testing purposes
+             */
             GameMap();
 
             /**
@@ -62,7 +71,15 @@ namespace visualizer_app {
              */
             void MoveMonsters();
             
-            void SetNextMonstersLocation(float prev_x, float prev_y, float next_x, float next_y);
+            /**
+             * Used only after player has moved in this frame
+             * @param prev_x previous x coordinate of monster
+             * @param prev_y previous y coordinate of monster
+             * @param next_x targeting x coordinate of monster
+             * @param next_y targeting y coordinate of monster
+             * @param monster_num is the number of monster within the monsters vector
+             */
+            void SetNextMonstersLocation(float prev_x, float prev_y, float next_x, float next_y, size_t monster_num);
             
             /**
              * Find the next direction where player is heading and draw character image facing that direction
