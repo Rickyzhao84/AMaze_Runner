@@ -19,8 +19,4 @@ namespace visualizer_app {
         ci::gl::draw(texture, object);
     }
 
-    void Button::SetTopLeftCorner(const vec2 &topLeftCorner) {
-        top_left_corner_ = topLeftCorner;
-    }
-
 }

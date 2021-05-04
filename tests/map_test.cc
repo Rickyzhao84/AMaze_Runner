@@ -15,8 +15,8 @@ TEST_CASE("Map generates same amount of nodes as required") {
     map_one.CreateMapModel();
     SECTION("Generates kNumOfObstaclesNodes obstacle nodes") {
         size_t count = 0;
-        for (size_t row = 0; row < 25; row++) {
-            for (size_t column = 0; column < 25; column++) {
+        for (size_t row = 0; row < map_one.dimension_; row++) {
+            for (size_t column = 0; column < map_one.dimension_; column++) {
                 if (map_one.map_model_[row][column] == visualizer_app::NodeLabel::ObstacleNode) {
                     count++;
                 }
@@ -26,8 +26,8 @@ TEST_CASE("Map generates same amount of nodes as required") {
     }
     SECTION("Generates 1 starting node") {
         size_t count = 0;
-        for (size_t row = 0; row < 25; row++) {
-            for (size_t column = 0; column < 25; column++) {
+        for (size_t row = 0; row < map_one.dimension_; row++) {
+            for (size_t column = 0; column < map_one.dimension_; column++) {
                 if (map_one.map_model_[row][column] == visualizer_app::NodeLabel::StartingNode) {
                     count++;
                 }
@@ -37,8 +37,8 @@ TEST_CASE("Map generates same amount of nodes as required") {
     }
     SECTION("Generates 1 ending node") {
         size_t count = 0;
-        for (size_t row = 0; row < 25; row++) {
-            for (size_t column = 0; column < 25; column++) {
+        for (size_t row = 0; row < map_one.dimension_; row++) {
+            for (size_t column = 0; column < map_one.dimension_; column++) {
                 if (map_one.map_model_[row][column] == visualizer_app::NodeLabel::EndingNode) {
                     count++;
                 }
@@ -106,5 +106,16 @@ TEST_CASE("Monster move closer to player") {
         REQUIRE(game_map.map_model_[0][1] == visualizer_app::NodeLabel::RegularNode);
         game_map.MoveMonsters();
         REQUIRE(game_map.map_model_[0][1] == visualizer_app::NodeLabel::MonsterNode);
+    }
+    SECTION("Monster should get stuck if it's surrounded by player trail (starting_node)") {
+        game_map.map_model_ =
+                {
+                        {visualizer_app::NodeLabel::RegularNode, visualizer_app::NodeLabel::StartingNode, visualizer_app::NodeLabel::RegularNode},
+                        {visualizer_app::NodeLabel::StartingNode, visualizer_app::NodeLabel::MonsterNode, visualizer_app::NodeLabel::StartingNode},
+                        {visualizer_app::NodeLabel::RegularNode, visualizer_app::NodeLabel::StartingNode, visualizer_app::NodeLabel::StartingNode}
+                };
+        REQUIRE(game_map.map_model_[1][1] == visualizer_app::NodeLabel::MonsterNode);
+        game_map.MoveMonsters();
+        REQUIRE(game_map.map_model_[1][1] == visualizer_app::NodeLabel::MonsterNode);
     }
 }

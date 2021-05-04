@@ -16,8 +16,6 @@ namespace visualizer_app {
          */
         void Draw() const;
 
-        void SetTopLeftCorner(const glm::vec2 &topLeftCorner);
-
         std::string kButtonImage = "../../../restart.png";
 
     private:

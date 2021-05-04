@@ -2,10 +2,6 @@
 
 #include "cinder/app/App.h"
 #include <visualizer/visualizer_app.h>
-#include <core/Location.h>
-#include <core/player.h>
-#include <visualizer/game_map.h>
-#include <visualizer/visualizer_app.h>
 
 using std::vector;
 using glm::vec2;
@@ -89,12 +85,14 @@ TEST_CASE("Player shouldn't go out of bounds") {
     game_map.map_model_ = vector;
     
     SECTION("Cannot move left") {
-        player.MoveLeft(game_map);
+        bool can_player_move_left = player.MoveLeft(game_map);
+        REQUIRE(can_player_move_left == false);
         REQUIRE(player.location_.GetXCoord() == 0);
         REQUIRE(player.location_.GetYCoord() == 0);
     }
     SECTION("Cannot move up") {
-        player.MoveUp(game_map);
+        bool can_player_move_up = player.MoveUp(game_map);
+        REQUIRE(can_player_move_up == false);
         REQUIRE(player.location_.GetXCoord() == 0);
         REQUIRE(player.location_.GetYCoord() == 0);
     }

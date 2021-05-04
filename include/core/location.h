@@ -29,10 +29,8 @@ namespace visualizer_app {
         void SetXCoord(const size_t &xCoord);
 
     private:
-
         size_t x_coord_;
         size_t y_coord_;
-
     };
 
 }

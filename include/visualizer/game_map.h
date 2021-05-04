@@ -127,22 +127,20 @@ namespace visualizer_app {
             std::string kLookLeftImage = "../../../looking_left.jpg";
             
             std::string kLookRightImage = "../../../looking_right.jpg";
-            
-            NextImage determine_next_image = NextImage::LookUp;
 
             std::vector<std::vector<NodeLabel>> map_model_;
-
-            std::vector<glm::vec2> monster_locations_;
             
             Location location_;
 
             size_t dimension_;
             
         private:
+            NextImage determine_next_image = NextImage::LookUp;
             glm::vec2 top_left_corner_;
             double map_size_;
             std::vector<glm::vec2> obstacle_pixels_;
             std::vector<glm::vec2> monster_pixels_;
+            std::vector<glm::vec2> monster_locations_;
         };
 
     

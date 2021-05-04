@@ -19,7 +19,9 @@ namespace visualizer_app {
             map.MoveMonsters();
         } else if (direction_num == 4 && player.MoveUp(map)) {
             map.MoveMonsters();
-        }
+        } 
+        
+        return;
     }
     
     void GameEngine::ResetMap(Player &player, GameMap &map) {
