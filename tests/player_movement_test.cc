@@ -6,7 +6,7 @@
 using std::vector;
 using glm::vec2;
 
-TEST_CASE("Player can move using the arrow keys") {
+TEST_CASE("Player can move freely when nothing is blocking them") {
     visualizer_app::Player player;
     visualizer_app::GameMap game_map(vec2(0,0), 3, 5);
     vector<vector<visualizer_app::NodeLabel>> vector
@@ -55,19 +55,21 @@ TEST_CASE("Obstacles and monsters should block player from moving to that direct
     vector<vector<visualizer_app::NodeLabel>> vector
             {
                     {visualizer_app::NodeLabel::MonsterNode, visualizer_app::NodeLabel::ObstacleNode, visualizer_app::NodeLabel::RegularNode},
-                    {visualizer_app::NodeLabel::MonsterNode, visualizer_app::NodeLabel::RegularNode, visualizer_app::NodeLabel::ObstacleNode},
+                    {visualizer_app::NodeLabel::MonsterNode, visualizer_app::NodeLabel::StartingNode, visualizer_app::NodeLabel::ObstacleNode},
                     {visualizer_app::NodeLabel::RegularNode, visualizer_app::NodeLabel::ObstacleNode, visualizer_app::NodeLabel::RegularNode}
             };
     game_map.map_model_ = vector;
+    player.location_.SetXCoord(1);
+    player.location_.SetYCoord(1);
 
     SECTION("Attempt to move right to obstacle should fail") {
         player.MoveRight(3, game_map);
         REQUIRE(player.location_.GetXCoord() == 1);
-        REQUIRE(player.location_.GetYCoord() == 0);
+        REQUIRE(player.location_.GetYCoord() == 1);
     }
     SECTION("Attempt to move down to monster should fail") {
         player.MoveDown(3, game_map);
-        REQUIRE(player.location_.GetXCoord() == 0);
+        REQUIRE(player.location_.GetXCoord() == 1);
         REQUIRE(player.location_.GetYCoord() == 1);
 
     }
