@@ -10,6 +10,8 @@ namespace visualizer_app {
         GameEngine();
         
         void HandleTurn(size_t direction_num, Player &player, GameMap &map);
+        
+        void ResetMap(Player &player, GameMap &map);
     };
     
     

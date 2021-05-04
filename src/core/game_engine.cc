@@ -4,6 +4,8 @@
 
 namespace visualizer_app {
     
+    using std::vector;
+    
     GameEngine::GameEngine() {
         
     }
@@ -17,6 +19,22 @@ namespace visualizer_app {
             map.MoveMonsters();
         } else if (direction_num == 4 && player.MoveUp(map)) {
             map.MoveMonsters();
+        }
+    }
+    
+    void GameEngine::ResetMap(Player &player, GameMap &map) {
+        map.Clear();
+        map.map_model_ = vector<vector<NodeLabel>>(map.dimension_, 
+                    vector<NodeLabel>(map.dimension_, NodeLabel::RegularNode));
+        map.CreateMapModel();
+        //Set starting_location_ same as the one in map_model_
+        for (size_t i = 0; i < map.dimension_; i++) {
+            for (size_t j = 0; j < map.dimension_; j++) {
+                if (map.map_model_[i][j] == NodeLabel::StartingNode) {
+                    player.location_.SetXCoord(j);
+                    player.location_.SetYCoord(i);
+                }
+            }
         }
     }
     

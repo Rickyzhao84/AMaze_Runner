@@ -74,18 +74,7 @@ namespace visualizer_app {
     void VisualizerApp::mouseDown(ci::app::MouseEvent event) {
         if (event.getX() > kButtonTopLeft.x && event.getX() < kButtonBottomRight.x) {
             if (event.getY() > kButtonTopLeft.y && event.getY() < kButtonBottomRight.y) {
-                game_map_.Clear();
-                game_map_.map_model_ = vector<vector<NodeLabel>>(kDimension, vector<NodeLabel>(kDimension, NodeLabel::RegularNode));
-                game_map_.CreateMapModel();
-                //Set starting_location_ same as the one in map_model_
-                for (size_t i = 0; i < kDimension; i++) {
-                    for (size_t j = 0; j < kDimension; j++) {
-                        if (game_map_.map_model_[i][j] == NodeLabel::StartingNode) {
-                            player_.location_.SetXCoord(j);
-                            player_.location_.SetYCoord(i);
-                        }
-                    }
-                }
+                game_engine_.ResetMap(player_, game_map_);
             }
         }
     }
