@@ -75,10 +75,13 @@ namespace visualizer_app {
              */
             void CreateMapModel();
             
+            /**
+             * Create the end point of the game based on where the starting point is
+             */
             void CreateEndPoint();
             
             /**
-             * Create monster locations every frame
+             * Create new monster locations every frame if player moves
              */
             void CreateMonsterLocations();
             

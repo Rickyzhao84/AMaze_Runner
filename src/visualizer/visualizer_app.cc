@@ -22,6 +22,7 @@ namespace visualizer_app {
         
         ci::app::setWindowSize((int) kWindowSize + 250, (int) kWindowSize);
         game_map_.CreateMapModel();
+        
         //Set starting_location_ same as the one in map_model_
         for (size_t i = 0; i < kDimension; i++) {
             for (size_t j = 0; j < kDimension; j++) {
@@ -37,13 +38,15 @@ namespace visualizer_app {
         ci::Color8u color("turquoise");
         ci::gl::clear(color);
         button_.Draw();
+        
+        //Check if player is located at the EndingNode, return EndGame drawing if so
         if (game_map_.map_model_[game_map_.location_.GetXCoord()][game_map_.location_.GetYCoord()] ==
             NodeLabel::EndingNode) {
             end_game_screen_.Draw();
             return;
         }
+        
         game_map_.Draw();
-
     }
 
     void VisualizerApp::keyDown(ci::app::KeyEvent event) {
@@ -72,6 +75,7 @@ namespace visualizer_app {
     }
     
     void VisualizerApp::mouseDown(ci::app::MouseEvent event) {
+        //Check if the place where user clicked is within the restart button range
         if (event.getX() > kButtonTopLeft.x && event.getX() < kButtonBottomRight.x) {
             if (event.getY() > kButtonTopLeft.y && event.getY() < kButtonBottomRight.y) {
                 game_engine_.ResetMap(player_, game_map_);

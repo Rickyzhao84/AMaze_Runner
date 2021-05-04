@@ -36,6 +36,10 @@ namespace visualizer_app {
              */
             void keyDown(ci::app::KeyEvent event) override;
             
+            /**
+             * When user left click the restart button
+             * @param event 
+             */
             void mouseDown(ci::app::MouseEvent event);
 
             const size_t kDimension = 35;
