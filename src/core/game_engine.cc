@@ -11,6 +11,8 @@ namespace visualizer_app {
     }
 
     void GameEngine::HandleTurn(size_t direction_num, Player &player, GameMap &map) {
+        
+        //Only move monster if the player has moved
         if (direction_num == 1 && player.MoveLeft(map)) {
             map.MoveMonsters();
         } else if (direction_num == 2 && player.MoveRight(map.dimension_, map)) {

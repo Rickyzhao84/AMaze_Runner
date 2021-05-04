@@ -47,16 +47,15 @@ namespace visualizer_app {
     }
 
     void GameMap::MoveMonsters() {
-        
         for (size_t i = 0; i < monster_locations_.size(); i++) {
             
             //Compare monster locations with player location_ and move monster location_ closer to player
             //Only move if the next node is a regular node because monsters are also blocked from obstacles
-            
             if (monster_locations_[i].x < location_.GetXCoord() &&
                 map_model_[(size_t) monster_locations_[i].x + 1][(size_t) monster_locations_[i].y] ==
                 NodeLabel::RegularNode) {
                 
+                //Set the next location of this monster to the pixel right to the current pixel
                 SetNextMonstersLocation(monster_locations_[i].x, monster_locations_[i].y, 
                                         monster_locations_[i].x + 1, monster_locations_[i].y, i);
                 
@@ -64,6 +63,7 @@ namespace visualizer_app {
                        map_model_[(size_t) monster_locations_[i].x - 1][(size_t) monster_locations_[i].y] ==
                        NodeLabel::RegularNode) {
 
+                //Set the next location of this monster to the pixel left to the current pixel
                 SetNextMonstersLocation(monster_locations_[i].x, monster_locations_[i].y,
                                         monster_locations_[i].x - 1, monster_locations_[i].y, i);
                 
@@ -85,8 +85,12 @@ namespace visualizer_app {
     }
 
     void GameMap::SetNextMonstersLocation(float prev_x, float prev_y, float next_x, float next_y, size_t monster_num) {
+        
+        //Set pixel of original location to regular node and pixel of next location to monster node
         map_model_[(size_t) prev_x][(size_t) prev_y] = NodeLabel::RegularNode;
         map_model_[(size_t) next_x][(size_t) next_y] = NodeLabel::MonsterNode;
+        
+        //Decide which monster location should be incremented or decremented
         if (next_x > prev_x) {
             monster_locations_[monster_num].x++;
         } else if (next_x < prev_x) {
@@ -104,6 +108,8 @@ namespace visualizer_app {
                                                       location_.GetXCoord() * pixel_side_length);
         
         vec2 bottom_right = pixel_top_left + vec2(pixel_side_length, pixel_side_length);
+        
+        //Decide which image should be used depending on the direction player is facing
         if (determine_next_image == NextImage::LookUp) {
             DrawImage(pixel_top_left, bottom_right, kLookUpImage);
         } else if (determine_next_image == NextImage::LookDown) {
@@ -116,21 +122,26 @@ namespace visualizer_app {
     }
 
     NodeLabel GameMap::DrawNodes(size_t row, size_t column) const {
+        
         //If the node at the pixel is starting node or a walked node
         if (map_model_[row][column] == NodeLabel::StartingNode) {
             ci::gl::color(kStartingNodeColor);
             return NodeLabel::StartingNode;
+            
         } else if (map_model_[row][column] == NodeLabel::EndingNode) {
             //If the node at the pixel is ending node
             ci::gl::color(kEndingNodeColor);
             return NodeLabel::EndingNode;
+            
         } else if (map_model_[row][column] == NodeLabel::ObstacleNode) {
             //If the node at the pixel is an obstacle node
             ci::gl::color(kObstacleColor);
             return NodeLabel::ObstacleNode;
+            
         } else if (map_model_[row][column] == NodeLabel::MonsterNode) {
             ci::gl::color(ci::Color("black"));
             return NodeLabel::MonsterNode;
+            
         } else {
             ci::gl::color(ci::Color("black"));
             return NodeLabel::RegularNode;
@@ -152,10 +163,11 @@ namespace visualizer_app {
         size_t random_point_x_coord = rand() % (dimension_);
         size_t random_point_y_coord = rand() % (dimension_);
 
+        //Create a random pixel and set it as the starting node
         map_model_[random_point_x_coord][random_point_y_coord] = NodeLabel::StartingNode;
         location_.SetXCoord(random_point_x_coord);
         location_.SetYCoord(random_point_y_coord);
-
+        
         CreateEndPoint();
 
         for (size_t i = 0; i < kNumOfObstacleNodes; i++) {
@@ -165,6 +177,7 @@ namespace visualizer_app {
             if (map_model_[random_point_x_coord][random_point_y_coord] != NodeLabel::StartingNode &&
                 map_model_[random_point_x_coord][random_point_y_coord] != NodeLabel::EndingNode) {
                 
+                //Add this obstacle location to the vector, used to track for player movement use
                 obstacle_pixels_.push_back(vec2(random_point_x_coord, random_point_y_coord));
                 map_model_[random_point_x_coord][random_point_y_coord] = NodeLabel::ObstacleNode;
             }
@@ -179,6 +192,7 @@ namespace visualizer_app {
                 map_model_[random_point_x_coord][random_point_y_coord] != NodeLabel::EndingNode &&
                 map_model_[random_point_x_coord][random_point_y_coord] != NodeLabel::ObstacleNode) {
 
+                //Add this monster location to the vector, used to track for player movement use
                 monster_pixels_.push_back(vec2(random_point_x_coord, random_point_y_coord));
                 map_model_[random_point_x_coord][random_point_y_coord] = NodeLabel::MonsterNode;
             }
@@ -193,6 +207,8 @@ namespace visualizer_app {
             size_t random_point_x_coord = rand() % (dimension_);
             size_t random_point_y_coord = rand() % (dimension_);
 
+            //Ending point should be at least kDistanceThreshold pixels away from starting point
+            //This is used to increase difficulty of every map
             if (map_model_[random_point_x_coord][random_point_y_coord] != NodeLabel::StartingNode &&
                     (std::abs((int) (random_point_x_coord - location_.GetXCoord())) > kDistanceThreshold ||
                      std::abs((int) (random_point_y_coord - location_.GetYCoord())) > kDistanceThreshold)) {
