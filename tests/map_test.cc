@@ -13,6 +13,7 @@ using std::vector;
 TEST_CASE("Map generates same amount of nodes as required") {
     visualizer_app::GameMap map_one(vec2(1,1), 25, 100);
     map_one.CreateMapModel();
+    
     SECTION("Generates kNumOfObstaclesNodes obstacle nodes") {
         size_t count = 0;
         for (size_t row = 0; row < map_one.dimension_; row++) {
@@ -24,6 +25,7 @@ TEST_CASE("Map generates same amount of nodes as required") {
         }
         REQUIRE(count == map_one.kNumOfObstacleNodes);
     }
+    
     SECTION("Generates 1 starting node") {
         size_t count = 0;
         for (size_t row = 0; row < map_one.dimension_; row++) {
@@ -35,6 +37,7 @@ TEST_CASE("Map generates same amount of nodes as required") {
         }
         REQUIRE(count == 1);
     }
+    
     SECTION("Generates 1 ending node") {
         size_t count = 0;
         for (size_t row = 0; row < map_one.dimension_; row++) {
@@ -67,6 +70,7 @@ TEST_CASE("Monster move closer to player") {
                     {visualizer_app::NodeLabel::RegularNode, visualizer_app::NodeLabel::RegularNode, visualizer_app::NodeLabel::StartingNode}
             };
     game_map.map_model_ = vector;
+    
     SECTION("Monster moves right first") {
         game_map.location_.SetXCoord(2);
         game_map.location_.SetYCoord(2);
@@ -74,6 +78,7 @@ TEST_CASE("Monster move closer to player") {
         game_map.MoveMonsters();
         REQUIRE(game_map.map_model_[1][0] == visualizer_app::NodeLabel::MonsterNode);
     }
+    
     SECTION("Monster moves down when player is below") {
         game_map.location_.SetXCoord(0);
         game_map.location_.SetYCoord(2);
@@ -81,6 +86,7 @@ TEST_CASE("Monster move closer to player") {
         game_map.MoveMonsters();
         REQUIRE(game_map.map_model_[0][1] == visualizer_app::NodeLabel::MonsterNode);
     }
+    
     SECTION("Monster doesn't move to player location_ if player is already at location_") {
         game_map.map_model_ =
                 {
@@ -94,6 +100,7 @@ TEST_CASE("Monster move closer to player") {
         game_map.MoveMonsters();
         REQUIRE(game_map.map_model_[0][0] == visualizer_app::NodeLabel::MonsterNode);
     }
+    
     SECTION("Monster chooses to go another route if the previous is blocked by an obstacle") {
         game_map.map_model_ = 
                 {
@@ -107,6 +114,7 @@ TEST_CASE("Monster move closer to player") {
         game_map.MoveMonsters();
         REQUIRE(game_map.map_model_[0][1] == visualizer_app::NodeLabel::MonsterNode);
     }
+    
     SECTION("Monster should get stuck if it's surrounded by player trail (starting_node)") {
         game_map.map_model_ =
                 {

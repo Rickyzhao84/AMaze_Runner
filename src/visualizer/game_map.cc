@@ -71,6 +71,7 @@ namespace visualizer_app {
                        map_model_[(size_t) monster_locations_[i].x][(size_t) monster_locations_[i].y - 1] ==
                        NodeLabel::RegularNode) {
 
+                //Set the next location of this monster to the pixel below the current pixel
                 SetNextMonstersLocation(monster_locations_[i].x, monster_locations_[i].y,
                                         monster_locations_[i].x, monster_locations_[i].y - 1, i);
                 
@@ -78,6 +79,7 @@ namespace visualizer_app {
                        map_model_[(size_t) monster_locations_[i].x][(size_t) monster_locations_[i].y + 1] ==
                        NodeLabel::RegularNode) {
 
+                //Set the next location of this monster to the pixel above the current pixel
                 SetNextMonstersLocation(monster_locations_[i].x, monster_locations_[i].y,
                                         monster_locations_[i].x, monster_locations_[i].y + 1, i);
             }
